@@ -110,7 +110,7 @@ public class LevelTemplate : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         if (distance <= 30)
-            SL.OnSongSwitche(SongInside);
+            SL.OnSongSwitch(SongInside);
     }
 
 

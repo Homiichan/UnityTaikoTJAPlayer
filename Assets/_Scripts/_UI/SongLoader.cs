@@ -56,14 +56,13 @@ public class SongLoader : MonoBehaviour
             SpawnedItem.transform.SetParent(SpawnPoint.transform, false);
             //get ItemDetails Component
             SpawnedItem.GetComponent<LevelTemplate>().AssignStruc(TGI.TJAFileAvailable[i], i);
-
             UICreated.Add(SpawnedItem);
-            //SSS.AddAtIndexCustom();
         }
+        gameObject.GetComponent<ScrollRect>().normalizedPosition = new Vector2(0,0);
 
     }
 
-    public void OnSongSwitche(TaikoSongContainer CurrentActiveSong)
+    public void OnSongSwitch(TaikoSongContainer CurrentActiveSong)
     {
         if(ActivePreviewSong.TitleName !=  "" && CurrentActiveSong.TitleName != ActivePreviewSong.TitleName)
         {

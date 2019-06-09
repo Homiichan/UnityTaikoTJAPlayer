@@ -122,12 +122,13 @@ public struct TaikoSongStruc
 public class TJAParser : MonoBehaviour
 {
     public string folderPath;
-    public List<string> TJAFileInDir;
-    List<string> TJAFileInDirPath;
+    List<string> TJAFileInDir = new List<string>();
+    List<string> TJAFileInDirPath = new List<string>();
     public List<TaikoSongContainer> TJAFileAvailable;
     public TaikoSongContainer CurrentSongData;
-    public int FileToCheck;
+    int FileToCheck;
     TaikoGameInstance TGI;
+    SongLoader SL;
     // Start is called before the first frame update
 
 
@@ -136,6 +137,7 @@ public class TJAParser : MonoBehaviour
     void Start()
     {
         TGI = GameObject.FindObjectOfType<TaikoGameInstance>();
+        SL = GameObject.FindObjectOfType<SongLoader>();
     }
 
     // Update is called once per frame
@@ -144,10 +146,14 @@ public class TJAParser : MonoBehaviour
 
     }
 
-    public void GetAllTJAFileInFolder()
+    public void GetAllTJAFileInFolder(string targetPath)
     {
+        if(targetPath[targetPath.Length - 1] != '\\')
+        {
+            targetPath = targetPath + "\\";
+        }
         string[] tmpfile;
-        tmpfile = Directory.GetFiles(folderPath, "*.tja", SearchOption.AllDirectories);
+        tmpfile = Directory.GetFiles(targetPath, "*.tja", SearchOption.AllDirectories);
         foreach (string FilePath in tmpfile)
         {
             TJAFileInDir.Add(FilePath);
@@ -155,13 +161,13 @@ public class TJAParser : MonoBehaviour
             ReadTJAFile(FilePath);
 
         }
+        //We Finished Parsing All The File Now We Are Pushing All Data To The GameInstance
         if(TGI != null)
         {
             TGI.OnTJAFileParsed(TJAFileAvailable);
             TJAFileAvailable.Clear();
-
-
         }
+        SL.CreateUI();
     }
 
 
@@ -170,6 +176,7 @@ public class TJAParser : MonoBehaviour
         //
         //ReadingAllLineOfTJAFile
         //
+        //Preparating lines for the parsing u_u
         string[] tmplines;
         if(File.Exists(FilePath))
         {
@@ -211,6 +218,7 @@ public class TJAParser : MonoBehaviour
         TaikoSongStruc CurrentStruc = new TaikoSongStruc(Taiko_Difficulty.Dif_Oni, 0, 0, new List<string>());
         TaikoSongContainer CUrrentParsingStuff = new TaikoSongContainer("", new List<TaikoSongStruc>(), new List<string>(), 0, "", 0, 0, 0, 0, 0, "", "", "");
         List<string> TmpCourseData = new List<string>();
+        //Parsing MetaData of the song 
         for (int i = 0; i <= DataToParse.Count - 1; i++)
         {
             string CurrentLine = DataToParse[i];
@@ -286,6 +294,7 @@ public class TJAParser : MonoBehaviour
                             break;
                     }
                 }
+                //Parsing Course Data
                 if (ParamName == "COURSE")
                 {
                     if (CurrentSongData.AllSongDifficulty.Count >= CurrentCourseMeta)
