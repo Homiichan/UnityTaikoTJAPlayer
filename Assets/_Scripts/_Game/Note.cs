@@ -10,6 +10,8 @@ public class Note : MonoBehaviour
     Renderer noterender;
     float SecondsToTravel = 0;
     Vector3 EndPosition;
+    public float tmpTime;
+    public float MeasureNumber;
 
     void Start()
     {
@@ -82,11 +84,11 @@ public class Note : MonoBehaviour
     {
         
     }
-
+    
     public IEnumerator MoveToPosition(Transform transform, Vector3 position, float timeToMove)
     {
         var currentPos = transform.position;
-        var t = 0f;
+        float t = 0f;
         while (t < 1)
         {
             t += Time.deltaTime / timeToMove;
@@ -96,4 +98,5 @@ public class Note : MonoBehaviour
         }
         Destroy(this.transform.parent.gameObject);
     }
+    
 }

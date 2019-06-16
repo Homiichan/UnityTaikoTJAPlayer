@@ -1480,7 +1480,11 @@ MonoBehaviour:
   TJAFileAvailable: []
   CurrentSongData:
     TitleName: 
-    AllSongDifficulty: []
+    AllSongDifficulty:
+    - Difficulty: 0
+      StarCount: 0
+      Balloon: 0
+      SongData: []
     AllSongData: []
     BPM: 0
     SoundWavePath: 

@@ -36,14 +36,20 @@ public struct NoteData
     public float NoteDurationMS;
     public Taiko_Notes NoteType;
     public int NoteNumber;
-    
-    public NoteData(string targetNoteDate, float targetNoteSpawnMS, float targetNoteDurationMS, Taiko_Notes targetNoteType, int targetNoteNumbers)
+    public float Time;
+    public float MeasureNumber;
+    public bool HasBeenSpawned;
+
+    public NoteData(NoteData Template)
     {
+        /*
         this.Notedata = targetNoteDate;
         this.MeasureLenght = targetNoteSpawnMS;
         this.NoteDurationMS = targetNoteDurationMS;
         this.NoteType = targetNoteType;
         this.NoteNumber = targetNoteNumbers;
+        */
+        this = Template;
     }
 }
 
