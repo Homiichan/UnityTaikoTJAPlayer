@@ -835,7 +835,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: -0.76604444, y: 0.5566704, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -3066,6 +3066,7 @@ MonoBehaviour:
     SongPath: 
     OggPath: 
   SongDiffIndex: 0
+  CurrentNoteState: 0
 --- !u!4 &2121587931
 Transform:
   m_ObjectHideFlags: 0

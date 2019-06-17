@@ -2,11 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum Taiko_NoteState
+{
+    Mounth_Open,
+    Mouth_Open_Angry,
+    Mouth_Close
+}
+
 public class TaikoGameInstance : MonoBehaviour
 {
     public List<TaikoSongContainer> TJAFileAvailable;
     public TaikoSongContainer CurrentSelectedSong;
     public int SongDiffIndex = 0;
+    float CurrentSongBPM = 0;
+    public Taiko_NoteState CurrentNoteState;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +54,29 @@ public class TaikoGameInstance : MonoBehaviour
         {
             Debug.Log("song index not valid");
         }
+    }
+
+    public void SetGiBPM(float targetBPM)
+    {
+        CurrentSongBPM = targetBPM;
+        StartCoroutine(SwitchNoteTexture());
+    }
+
+
+    public IEnumerator SwitchNoteTexture()
+    {
+
+        yield return new WaitForSeconds((60000 / CurrentSongBPM) / 1000);
+        if(CurrentNoteState == Taiko_NoteState.Mounth_Open)
+        {
+            CurrentNoteState = Taiko_NoteState.Mouth_Close;
+        }
+        else
+        {
+            CurrentNoteState = Taiko_NoteState.Mounth_Open;
+        }
+        StartCoroutine(SwitchNoteTexture());
+
     }
 
 }

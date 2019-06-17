@@ -25,7 +25,8 @@ public enum Taiko_Notes
     startBalloon,
     endBalloon,
     Kusudama,
-    endKusudama
+    endKusudama,
+    bareline
 }
 
 [System.Serializable]
