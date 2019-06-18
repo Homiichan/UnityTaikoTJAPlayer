@@ -1,0 +1,376 @@
+fileFormatVersion: 2
+guid: 25ccd58a861e3c34d9bca08454967649
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 477631594482643655
+    second: Taiko_GoGoStartMax_0
+  - first:
+      213: -3578337350163128888
+    second: Taiko_GoGoStartMax_1
+  - first:
+      213: -6676094573151525129
+    second: Taiko_GoGoStartMax_2
+  - first:
+      213: 2643699184859505382
+    second: Taiko_GoGoStartMax_3
+  - first:
+      213: 8781966339799890014
+    second: Taiko_GoGoStartMax_4
+  - first:
+      213: 6121781242646992997
+    second: Taiko_GoGoStartMax_5
+  - first:
+      213: -2221441015043215980
+    second: Taiko_GoGoStartMax_6
+  - first:
+      213: 6462237869167687096
+    second: Taiko_GoGoStartMax_7
+  - first:
+      213: -1394768826078558685
+    second: Taiko_GoGoStartMax_8
+  - first:
+      213: 1197558495922545996
+    second: Taiko_GoGoStartMax_9
+  - first:
+      213: -8659570662064361131
+    second: Taiko_GoGoStartMax_10
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: 1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Taiko_GoGoStartMax_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 840
+        width: 360
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cede3fda57a1954aaee4b7ee2ee543a
+      internalID: 477631594482643655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_GoGoStartMax_1
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 840
+        width: 360
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89b0a278e4367b14f98421a4d8b50016
+      internalID: -3578337350163128888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_GoGoStartMax_2
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 840
+        width: 360
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69a22b1b2ecf66a49a5753da1a38b33a
+      internalID: -6676094573151525129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_GoGoStartMax_3
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 840
+        width: 360
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2d3367472bd7204e907f55f49adfff2
+      internalID: 2643699184859505382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_GoGoStartMax_4
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 840
+        width: 360
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2236ecfad990a164d848e8ca6be7b26d
+      internalID: 8781966339799890014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_GoGoStartMax_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 656
+        width: 360
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab8a8e8b12568f645b6f0792bf27af2e
+      internalID: 6121781242646992997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_GoGoStartMax_6
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 656
+        width: 360
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a0d8f74940e2184f9ec0c552e9c7a24
+      internalID: -2221441015043215980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_GoGoStartMax_7
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 656
+        width: 360
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b807c0c98cb03324a808957519de4796
+      internalID: 6462237869167687096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_GoGoStartMax_8
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 656
+        width: 360
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34ba14d281f587f45abbefd0542322d4
+      internalID: -1394768826078558685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_GoGoStartMax_9
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 656
+        width: 360
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbd3d0f10101da84c8494995ee1a9f43
+      internalID: 1197558495922545996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_GoGoStartMax_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 472
+        width: 360
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91e30455efc7bbf4b972295f25e0b0e8
+      internalID: -8659570662064361131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: f7f2e0c1ecbca0447883d2eb55507ace
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
