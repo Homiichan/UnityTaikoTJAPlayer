@@ -1,0 +1,640 @@
+fileFormatVersion: 2
+guid: 9a538a63f13de2d4ab253e0e3040d2f2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2149402300410173004
+    second: Taiko_10combo_0
+  - first:
+      213: -7696159435434744018
+    second: Taiko_10combo_1
+  - first:
+      213: -1304248270214729702
+    second: Taiko_10combo_2
+  - first:
+      213: -2087182726646887690
+    second: Taiko_10combo_3
+  - first:
+      213: 4169281087038651924
+    second: Taiko_10combo_4
+  - first:
+      213: -157026801595931614
+    second: Taiko_10combo_5
+  - first:
+      213: -2401406147991548952
+    second: Taiko_10combo_6
+  - first:
+      213: -2974999081533465591
+    second: Taiko_10combo_7
+  - first:
+      213: -8154985158427489444
+    second: Taiko_10combo_8
+  - first:
+      213: -8642138999859789211
+    second: Taiko_10combo_9
+  - first:
+      213: 1922264060519131445
+    second: Taiko_10combo_10
+  - first:
+      213: -5660744915075088848
+    second: Taiko_10combo_11
+  - first:
+      213: 2865891377958963157
+    second: Taiko_10combo_12
+  - first:
+      213: -5033310868572123516
+    second: Taiko_10combo_13
+  - first:
+      213: 7568145332727807612
+    second: Taiko_10combo_14
+  - first:
+      213: 3323905892808821225
+    second: Taiko_10combo_15
+  - first:
+      213: -5843651128286462310
+    second: Taiko_10combo_16
+  - first:
+      213: 1797825304080027975
+    second: Taiko_10combo_17
+  - first:
+      213: 6632927767999152409
+    second: Taiko_10combo_18
+  - first:
+      213: 3299068518723042462
+    second: Taiko_10combo_19
+  - first:
+      213: 9038801352734000442
+    second: Taiko_10combo_20
+  - first:
+      213: -4490154862919945550
+    second: Taiko_10combo_21
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Taiko_10combo_0
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 975
+        width: 174
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34d5a319a32bf3648937e70b10a53f5e
+      internalID: 2149402300410173004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_10combo_1
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 975
+        width: 174
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fb7db36ce9eb084da7f00c4adef5a63
+      internalID: -7696159435434744018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_10combo_2
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 1027
+        width: 200
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f0092adacfdd61459cda3c9abf25279
+      internalID: -1304248270214729702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_10combo_3
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 975
+        width: 172
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cedcf29ae52d9404eb9d5a6a3c2bc8e6
+      internalID: -2087182726646887690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_10combo_4
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 833
+        width: 200
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15dbc7048c9e55946a8fed9759c2b5f7
+      internalID: 4169281087038651924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_10combo_5
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 829
+        width: 200
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd191cb9579205c45b9619b0c1ffe3e6
+      internalID: -157026801595931614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_10combo_6
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 824
+        width: 200
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b1c0ce4b2dd5af4b80b8e3fa70d4fb8
+      internalID: -2401406147991548952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_10combo_7
+      rect:
+        serializedVersion: 2
+        x: 1177
+        y: 789
+        width: 200
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcc5f13a213af7d46abcc8ce00f96413
+      internalID: -2974999081533465591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_10combo_8
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 618
+        width: 200
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54e1c574a203929428b9df972239f02c
+      internalID: -8154985158427489444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_10combo_9
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 607
+        width: 200
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4e125ed2c09e494aab60f80719062b6
+      internalID: -8642138999859789211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_10combo_10
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 595
+        width: 200
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a229404c293f4a647a8827f23ee24a81
+      internalID: 1922264060519131445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_10combo_11
+      rect:
+        serializedVersion: 2
+        x: 1177
+        y: 621
+        width: 200
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f83c1401d6e08643b5e424a59d3c267
+      internalID: -5660744915075088848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_10combo_12
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 393
+        width: 200
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 114c82f6223d13e498b81fe0a411094d
+      internalID: 2865891377958963157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_10combo_13
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 395
+        width: 200
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cc00cdeeba7ce64d998aeb1dc4773dd
+      internalID: -5033310868572123516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_10combo_14
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 398
+        width: 200
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6ede34570c8a2a4497d02b4d9dba01b
+      internalID: 7568145332727807612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_10combo_15
+      rect:
+        serializedVersion: 2
+        x: 1177
+        y: 445
+        width: 200
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 160a3fc324f2900408c29b17e9f0ed65
+      internalID: 3323905892808821225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_10combo_16
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 199
+        width: 174
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25845d66ecfd18b4cb62bffabc68ffd3
+      internalID: -5843651128286462310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_10combo_17
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 207
+        width: 200
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f549dcfc340fe8048adce28e06a9e689
+      internalID: 1797825304080027975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_10combo_18
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 210
+        width: 200
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b1048ed15d59244180dc437f6a30d35
+      internalID: 6632927767999152409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_10combo_19
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 5
+        width: 173
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4784b56aa05555b4785411711e37cd2b
+      internalID: 3299068518723042462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_10combo_20
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 5
+        width: 172
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1d9596177790f04981d546ae566701b
+      internalID: 9038801352734000442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_10combo_21
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 5
+        width: 173
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b3ce562884087c4386a2402b30f110a
+      internalID: -4490154862919945550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 925ff7f79d9602a4fbd8e712bcc62881
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

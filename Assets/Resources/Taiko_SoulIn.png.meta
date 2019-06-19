@@ -1,0 +1,592 @@
+fileFormatVersion: 2
+guid: a176af8b32816fa4080a700ea0a66260
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6213341606639603915
+    second: Taiko_SoulIn_0
+  - first:
+      213: 3356580105376816267
+    second: Taiko_SoulIn_1
+  - first:
+      213: -7689138358923612972
+    second: Taiko_SoulIn_2
+  - first:
+      213: 8603776555180390379
+    second: Taiko_SoulIn_3
+  - first:
+      213: 1963708376726317833
+    second: Taiko_SoulIn_4
+  - first:
+      213: 4954816975904543961
+    second: Taiko_SoulIn_5
+  - first:
+      213: -7307950453864140598
+    second: Taiko_SoulIn_6
+  - first:
+      213: 8110085618773848556
+    second: Taiko_SoulIn_7
+  - first:
+      213: 4561228519972149696
+    second: Taiko_SoulIn_8
+  - first:
+      213: 4712200750948834981
+    second: Taiko_SoulIn_9
+  - first:
+      213: -7823470255116695086
+    second: Taiko_SoulIn_10
+  - first:
+      213: -8628498862503468553
+    second: Taiko_SoulIn_11
+  - first:
+      213: -5221124982123153037
+    second: Taiko_SoulIn_12
+  - first:
+      213: 6212219905657954070
+    second: Taiko_SoulIn_13
+  - first:
+      213: -7700760286467148750
+    second: Taiko_SoulIn_14
+  - first:
+      213: 4984130232456377147
+    second: Taiko_SoulIn_15
+  - first:
+      213: 1333659120430917683
+    second: Taiko_SoulIn_16
+  - first:
+      213: 8619959971640314698
+    second: Taiko_SoulIn_17
+  - first:
+      213: -1795428472626473725
+    second: Taiko_SoulIn_18
+  - first:
+      213: -5764227003043261530
+    second: Taiko_SoulIn_19
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Taiko_SoulIn_0
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 975
+        width: 174
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ab31142c708ef042833a3db0446b33e
+      internalID: -6213341606639603915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_SoulIn_1
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 975
+        width: 173
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5357cc6b91dc4054ea804baee41dc057
+      internalID: 3356580105376816267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_SoulIn_2
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 1012
+        width: 179
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 870b004967123104f9491fe737f41d5e
+      internalID: -7689138358923612972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_SoulIn_3
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 1011
+        width: 193
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17cce4aaa7a5d3741bc24c1aaf999eb3
+      internalID: 8603776555180390379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_SoulIn_4
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 819
+        width: 179
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2627e5676e6ead4392545613cf51c9d
+      internalID: 1963708376726317833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_SoulIn_5
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 811
+        width: 168
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0e951fedc4dc8d4fba619890d78d4ef
+      internalID: 4954816975904543961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_SoulIn_6
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 811
+        width: 167
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7602be1cf6ce21d40946db88e20b54c8
+      internalID: -7307950453864140598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_SoulIn_7
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 817
+        width: 193
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d556647502358d94486bb92ddd7d9b08
+      internalID: 8110085618773848556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_SoulIn_8
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 624
+        width: 200
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee5ab614c2b0c114cb92d376cb1cc96b
+      internalID: 4561228519972149696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_SoulIn_9
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 624
+        width: 200
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92e4f3d8db180ca428454cf592c4c92f
+      internalID: 4712200750948834981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_SoulIn_10
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 624
+        width: 200
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26529f701795e934ea83dd8e2917850c
+      internalID: -7823470255116695086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_SoulIn_11
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 431
+        width: 200
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a478ef013c4f45409d4fb02812fae71
+      internalID: -8628498862503468553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_SoulIn_12
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 420
+        width: 200
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 959973712cf2ede4a94cf3974506182a
+      internalID: -5221124982123153037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_SoulIn_13
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 407
+        width: 200
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f47ee6b4f4839240bf3dad4f705e8ad
+      internalID: 6212219905657954070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_SoulIn_14
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 211
+        width: 178
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53b8368ed6f2a8949a9627eb2d6df6e1
+      internalID: -7700760286467148750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_SoulIn_15
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 211
+        width: 178
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 832cfe97260d9454cb9476e2dff8f0e6
+      internalID: 4984130232456377147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_SoulIn_16
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 231
+        width: 193
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc9dd05153463674e8bce066934e37d3
+      internalID: 1333659120430917683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_SoulIn_17
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 38
+        width: 193
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cee623cade8e36429a8d7537243bcc0
+      internalID: 8619959971640314698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_SoulIn_18
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 39
+        width: 168
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6076f65b1bfd042489fb9700efb3f2fd
+      internalID: -1795428472626473725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_SoulIn_19
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 39
+        width: 168
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b51afc0c17bc044381bccc284c8155f
+      internalID: -5764227003043261530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 54ecc086e016b454db88b55bac36fb3b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -62,6 +62,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_Scripts\_Debug\AnimationTesterEditor.cs" />
+    <Compile Include="Assets\_Scripts\_Debug\AnimationUITester.cs" />
     <Compile Include="Assets\_Scripts\_Game\Note.cs" />
     <Compile Include="Assets\_Scripts\_Game\TaikoCharacter.cs" />
     <Compile Include="Assets\_Scripts\_Game\TaikoGameInstance.cs" />

@@ -1,0 +1,592 @@
+fileFormatVersion: 2
+guid: 4fb72d104b92a504c8c2b157ea57f82d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8532670237982288632
+    second: Taiko_ClearIn_0
+  - first:
+      213: -7466211848396240959
+    second: Taiko_ClearIn_1
+  - first:
+      213: -5105211069495758989
+    second: Taiko_ClearIn_2
+  - first:
+      213: -4147298539231803573
+    second: Taiko_ClearIn_3
+  - first:
+      213: 1156894050091035422
+    second: Taiko_ClearIn_4
+  - first:
+      213: 7336032058210375094
+    second: Taiko_ClearIn_5
+  - first:
+      213: -3433565229115352006
+    second: Taiko_ClearIn_6
+  - first:
+      213: 2057843858585070568
+    second: Taiko_ClearIn_7
+  - first:
+      213: -8340177123869466046
+    second: Taiko_ClearIn_8
+  - first:
+      213: 4506307004326997156
+    second: Taiko_ClearIn_9
+  - first:
+      213: -1631163991322670004
+    second: Taiko_ClearIn_10
+  - first:
+      213: 5334496452580022227
+    second: Taiko_ClearIn_11
+  - first:
+      213: -1538550065726983668
+    second: Taiko_ClearIn_12
+  - first:
+      213: -7294156143303385695
+    second: Taiko_ClearIn_13
+  - first:
+      213: -1244042855748867424
+    second: Taiko_ClearIn_14
+  - first:
+      213: -4911311364513420199
+    second: Taiko_ClearIn_15
+  - first:
+      213: 2012114931886462607
+    second: Taiko_ClearIn_16
+  - first:
+      213: 3351339604403247101
+    second: Taiko_ClearIn_17
+  - first:
+      213: -3212946893319284633
+    second: Taiko_ClearIn_18
+  - first:
+      213: -7974739062810263643
+    second: Taiko_ClearIn_19
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Taiko_ClearIn_0
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 975
+        width: 174
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b27afbf9d431d64f8326f77279f00a6
+      internalID: 8532670237982288632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_ClearIn_1
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 975
+        width: 173
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 939e6780f81a0fa468853b5144da0164
+      internalID: -7466211848396240959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_ClearIn_2
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 1012
+        width: 179
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf58ba30d951a224c95b57e306bb21a4
+      internalID: -5105211069495758989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_ClearIn_3
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 1011
+        width: 193
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f6b173749517cd479772a0589b71cb7
+      internalID: -4147298539231803573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_ClearIn_4
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 819
+        width: 179
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aebe6208d11c5e645bd79a284a79ca0c
+      internalID: 1156894050091035422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_ClearIn_5
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 811
+        width: 168
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af7d1cfe312eafc48825841fc9eec19d
+      internalID: 7336032058210375094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_ClearIn_6
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 811
+        width: 167
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e987fec666a08b4a8b67cb28cfc3a70
+      internalID: -3433565229115352006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_ClearIn_7
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 817
+        width: 193
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e14cd475e48587e4189cddd8589a570c
+      internalID: 2057843858585070568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_ClearIn_8
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 624
+        width: 200
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 002166ad49e5e3d49a85e88238a06490
+      internalID: -8340177123869466046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_ClearIn_9
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 624
+        width: 200
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf1c8e259ff323543b01fca1a16fe6e0
+      internalID: 4506307004326997156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_ClearIn_10
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 624
+        width: 200
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 738198533be9a8249bc6a88af9c8a071
+      internalID: -1631163991322670004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_ClearIn_11
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 431
+        width: 200
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ae1785ebf6ce384bb4a82ee3decdc66
+      internalID: 5334496452580022227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_ClearIn_12
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 420
+        width: 200
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0804f05d824a0d43af6ffff42f7a8ee
+      internalID: -1538550065726983668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_ClearIn_13
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 407
+        width: 200
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b8c2109604eeec4a9de472a57ee6a40
+      internalID: -7294156143303385695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_ClearIn_14
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 211
+        width: 178
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 944da5ffc015a1b44b70405fbd6f0044
+      internalID: -1244042855748867424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_ClearIn_15
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 211
+        width: 178
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ea8f39a4040a6e4aa997f2f51f4a95d
+      internalID: -4911311364513420199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_ClearIn_16
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 231
+        width: 193
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d03def2184f3cf428c7a7a620743888
+      internalID: 2012114931886462607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_ClearIn_17
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 38
+        width: 193
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b20c57b1fbab4d4088c6e9b3579dfbd
+      internalID: 3351339604403247101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_ClearIn_18
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 39
+        width: 168
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9467aa3ee584e8046b9381a30cfa1c63
+      internalID: -3212946893319284633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Taiko_ClearIn_19
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 39
+        width: 168
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee3e81d7b326d4c48951d8b39ee613af
+      internalID: -7974739062810263643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: e25e4b0c082df7c4cb0ddb2ff84193b1
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
