@@ -23,6 +23,8 @@ public class Note : MonoBehaviour
     public float NoteBPM;
     Taiko_NoteState CurrentNoteState;
     bool IsHitted = false;
+    public float HitTime;
+    TaikoSongPlayer TGS;
 
 
 
@@ -38,11 +40,11 @@ public class Note : MonoBehaviour
 
     void Start()
     {
-
+        TGS = GameObject.FindObjectOfType<TaikoSongPlayer>();
        
     }
 
-    public void OnSpawn(float secondsToTravel, Vector3 targetEndPoint, Taiko_Notes targetNoteType, float BPM)
+    public void OnSpawn(float secondsToTravel, Vector3 targetEndPoint, Taiko_Notes targetNoteType, float BPM, float NoteTime)
     {
         SecondsToTravel = secondsToTravel;
         CurrentNoteType = targetNoteType;
@@ -55,24 +57,29 @@ public class Note : MonoBehaviour
             rend = GetComponent<Renderer>();
             rend.enabled = false;
             ChildRender.enabled = true;
+            //Destroy(GetComponent<Renderer>());
+            //Destroy(this.transform.parent.gameObject);
         }
         else
         {
             FindCorrectNoteMaterial();
         }
         
-        if(CurrentNoteType == Taiko_Notes.Blank)
-        {
-            Destroy(this.transform.parent.gameObject);
-        }
+        
         if(CurrentNoteType == Taiko_Notes.bareline)
         {
             this.GetComponent<Renderer>().enabled = false;
             this.GetComponentInChildren<Renderer>().enabled = true;
+            Destroy(this.GetComponent<Renderer>());
         }
         EndPosition = targetEndPoint;
         StartCoroutine(MoveToPosition(this.transform, EndPosition, SecondsToTravel));
-        
+        HitTime = NoteTime + secondsToTravel;
+        if (CurrentNoteType == Taiko_Notes.Blank)
+        {
+            DestroyNote(false);
+            //Destroy(this.transform.parent.gameObject);
+        }
     }
     void SetNoteColorAndSize()
     {
@@ -193,8 +200,54 @@ public class Note : MonoBehaviour
             transform.position = Vector3.Lerp(currentPos, position, t);
             yield return null;
             
+            
         }
+        if(!IsHitted)
+            DestroyNote(false);
+
+    }
+
+    public void DestroyNote(bool Hiited)
+    {
+        TGS = GameObject.FindObjectOfType<TaikoSongPlayer>();
+        //Debug.Log(TGS);
+        if (Contains(TGS.tmpNote, this))
+        {
+            if(Hiited)
+            {
+                if(this.GetComponent<AudioSource>() != null)
+                {
+                    this.GetComponent<AudioSource>().Play();
+                }
+               
+                StopCoroutine(MoveToPosition(this.transform, EndPosition, SecondsToTravel));
+                this.transform.parent.GetComponent<Animation>().Play();
+                IsHitted = true;
+                StartCoroutine(DestroyAfterSeconds());
+                TGS.tmpNote.Remove(this);
+            }
+            else
+            {
+                TGS.tmpNote.Remove(this);
+                Destroy(this.transform.parent.gameObject);
+            }
+            
+        }
+    }
+
+    public IEnumerator DestroyAfterSeconds()
+    {
+        yield return new WaitForSeconds(1);
         Destroy(this.transform.parent.gameObject);
     }
-    
+    bool Contains(List<Note> list, Note nameClass)
+    {
+        foreach (Note n in list)
+        {
+            if (n.HitTime == nameClass.HitTime)
+            { return true; }
+        }
+        return false;
+    }
+
 }

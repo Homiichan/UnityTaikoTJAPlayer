@@ -37,6 +37,7 @@ public class TaikoSongPlayer : MonoBehaviour
     /// </summary>
     public List<NoteData> SongNoteData = new List<NoteData>();
     public List<string> tmpListData;
+    public List<Note> tmpNote = new List<Note>();
 
 
     // Start is called before the first frame update
@@ -319,10 +320,14 @@ public class TaikoSongPlayer : MonoBehaviour
     {
         GameObject tmpObject = Instantiate(ObjectToSpawn, SpawnPoint.transform.position, Quaternion.identity);
         tmpObject.transform.parent = this.transform;
-        tmpObject.transform.position = SpawnPoint.transform.position;
-        tmpObject.GetComponentInChildren<Note>().OnSpawn(.5f, EndPoint.transform.position, NoteToSpawn, CurrentPlayingSong.BPM);
-        //Debug.Log(noteduration.ToString() + NoteToSpawn);
         
+        tmpObject.transform.position = SpawnPoint.transform.position;
+        tmpNote.Add(tmpObject.GetComponentInChildren<Note>());
+        tmpObject.GetComponentInChildren<Note>().OnSpawn(.7f, EndPoint.transform.position, NoteToSpawn, CurrentPlayingSong.BPM, LasSpawnedNote);
+        tmpObject.name = tmpObject.GetComponentInChildren<Note>().HitTime.ToString();
+        //Debug.Log(noteduration.ToString() + NoteToSpawn);
+
+
 
 
     }
@@ -372,5 +377,59 @@ public class TaikoSongPlayer : MonoBehaviour
         //Debug.Log(Mathf.Abs(a - b));
         return (Mathf.Abs(a - b) < treshold);
     }
+
+    public void RegisterInput(DrumInputType NotePressed)
+    {
+        FindClosedNote(NotePressed);
+        Debug.Log("notepressed" + tick);
+    }
+
+    void FindClosedNote(DrumInputType NotePressed)
+    {
+        
+        float tmpClosestNoteTime;
+        float HittedTime = tick;
+        //Debug.Log(HittedTime);
+        //Debug.Log(NotePressed.ToString());
+        for(int i = 0; i < tmpNote.Count -1;i++)
+        {
+            Note TmpForNote = tmpNote[i];
+            if (TmpForNote.CurrentNoteType != Taiko_Notes.bareline)
+            {
+                if (HittedTime - TmpForNote.HitTime < .3f && CanHitThisNote(NotePressed, TmpForNote.CurrentNoteType))
+                {
+                    TmpForNote.DestroyNote(true);
+                }
+            }
+        }
+        /*
+        foreach (Note tmpForNote in tmpNote)
+        {
+            if(tmpForNote.CurrentNoteType != Taiko_Notes.bareline)
+            {
+                if (HittedTime - tmpForNote.HitTime < .3f && CanHitThisNote(NotePressed, tmpForNote.CurrentNoteType))
+                {
+                    tmpForNote.DestroyNote();
+                }
+            }
+        }
+        */
+        //return null;
+    }
+
+    bool CanHitThisNote(DrumInputType NotePressed, Taiko_Notes NoteToCheck)
+    {
+        if(NotePressed == DrumInputType.LeftKa || NotePressed == DrumInputType.RightKa && NoteToCheck == Taiko_Notes.Ka || NoteToCheck == Taiko_Notes.BigKa)
+        {
+            return true;
+        }
+        if (NotePressed == DrumInputType.RightDon || NotePressed == DrumInputType.LeftDon && NoteToCheck == Taiko_Notes.Don || NoteToCheck == Taiko_Notes.BigDon)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
 
 }

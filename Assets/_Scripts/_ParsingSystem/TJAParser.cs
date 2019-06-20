@@ -277,7 +277,9 @@ public class TJAParser : MonoBehaviour
                             break;
 
                         case "OFFSET":
+                            //Debug.Log(CurrentSongData.TitleName + ParamInfo);
                             CurrentSongData.Offset = tryToParseFloatCheck(ParamInfo);
+                            
                             break;
 
                         case "SONGVOL":
@@ -452,7 +454,8 @@ public class TJAParser : MonoBehaviour
 
     float tryToParseFloatCheck(string StrToParse)
     {
-        float convertedFloat = 0;
+        //float convertedFloat = 0;
+        /*
         if (float.TryParse(StrToParse, out convertedFloat))
         {
             return convertedFloat;
@@ -461,6 +464,8 @@ public class TJAParser : MonoBehaviour
         {
             return 0;
         }
+        */
+        return float.Parse(StrToParse, System.Globalization.CultureInfo.InvariantCulture.NumberFormat);
 
     }
 
