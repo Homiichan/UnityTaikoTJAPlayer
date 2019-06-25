@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using UnityEngine;
+using TMPro;
 
 public class TaikoSongPlayer : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class TaikoSongPlayer : MonoBehaviour
     public AudioType CurrentAudioType;
     AudioClip myClip;
     bool SongHasStarted = false;
-    float tick;
+    public float tick;
 
     //ReadLineVar
     public int CurrentLine = 0;
@@ -31,13 +32,15 @@ public class TaikoSongPlayer : MonoBehaviour
     public GameObject SpawnPoint;
     public GameObject EndPoint;
     public GameObject ObjectToSpawn;
+    public TextMeshPro text;
     /// <summary>
     /// parse data before or after parsing and convert course to custom struc circle with the spawn time in seconds or ms 
     /// To calculate that we will be using measure and measurelenght etc
     /// </summary>
     public List<NoteData> SongNoteData = new List<NoteData>();
     public List<string> tmpListData;
-    public List<Note> tmpNote = new List<Note>();
+    public List<GameObject> CurrentNote = new List<GameObject>();
+    public GameObject HitPoint;
 
 
     // Start is called before the first frame update
@@ -45,7 +48,7 @@ public class TaikoSongPlayer : MonoBehaviour
     {
         TGI = GameObject.FindObjectOfType<TaikoGameInstance>();
         AS = GetComponent<AudioSource>();
-        
+       // Time.timeScale = .5f;
         
         if(TGI != null)
         {
@@ -69,6 +72,8 @@ public class TaikoSongPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("start pos = " + SpawnPoint.transform.position + "end point = " + EndPoint.transform.position);
+        text.text = tick.ToString();
         if(SongHasStarted)
         {
             tick += Time.deltaTime;
@@ -316,16 +321,18 @@ public class TaikoSongPlayer : MonoBehaviour
         return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
     }
 
-    void SpawnNote(Taiko_Notes NoteToSpawn)
+    void SpawnNote(Taiko_Notes NoteToSpawn, float spawnTime)
     {
         GameObject tmpObject = Instantiate(ObjectToSpawn, SpawnPoint.transform.position, Quaternion.identity);
         tmpObject.transform.parent = this.transform;
         
         tmpObject.transform.position = SpawnPoint.transform.position;
-        tmpNote.Add(tmpObject.GetComponentInChildren<Note>());
-        tmpObject.GetComponentInChildren<Note>().OnSpawn(.7f, EndPoint.transform.position, NoteToSpawn, CurrentPlayingSong.BPM, LasSpawnedNote);
+        if(NoteToSpawn != Taiko_Notes.bareline && NoteToSpawn != Taiko_Notes.Blank)
+        {
+            CurrentNote.Add(tmpObject);
+        }
+        tmpObject.GetComponentInChildren<Note>().OnSpawn(.7f, EndPoint.transform.position, NoteToSpawn, CurrentPlayingSong.BPM, spawnTime, tick);
         tmpObject.name = tmpObject.GetComponentInChildren<Note>().HitTime.ToString();
-        //Debug.Log(noteduration.ToString() + NoteToSpawn);
 
 
 
@@ -334,19 +341,6 @@ public class TaikoSongPlayer : MonoBehaviour
 
     void GetClosesNotes(float tick)
     {
-        //Debug.Log(tick);
-        /*
-        foreach(NoteData test in SongNoteData)
-        {
-            if(RoughlyEqual(test.Time, tick, 0.01f) && !test.HasBeenSpawned)
-            {
-                NoteData ND = test;
-                Debug.Log("ok " + test.NoteType.ToString() + test.Time + " note data = " + test.Notedata + "and tick = " + tick);
-                ND.HasBeenSpawned = true;
-                test = ND;
-            }
-        }
-        */
         for (int i = 0; i < SongNoteData.Count - 1; i++)
         {
             NoteData tmpNoteData = SongNoteData[i];
@@ -354,18 +348,16 @@ public class TaikoSongPlayer : MonoBehaviour
             {
                 if(LasSpawnedNote != tmpNoteData.Time && tmpNoteData.NoteType != Taiko_Notes.bareline)
                 {
-                    //Debug.Log("ok " + tmpNoteData.NoteType.ToString() + tmpNoteData.Time + " note data = " + tmpNoteData.Notedata + "and tick = " + tick + tmpNoteData.HasBeenSpawned);
-                    SpawnNote(tmpNoteData.NoteType);
+                    SpawnNote(tmpNoteData.NoteType, tmpNoteData.Time);
                     tmpNoteData.HasBeenSpawned = true;
                     LasSpawnedNote = tmpNoteData.Time;
                     LastSpawnNote = tmpNoteData.NoteType;
                 }
                 else if(LastSpawnedBareline != tmpNoteData.Time && tmpNoteData.NoteType == Taiko_Notes.bareline)
                 {
-                    SpawnNote(tmpNoteData.NoteType);
+                    SpawnNote(tmpNoteData.NoteType, tmpNoteData.Time);
                     tmpNoteData.HasBeenSpawned = true;
                     LastSpawnedBareline = tmpNoteData.Time;
-                    //LastSpawnNote = tmpNoteData.NoteType;
                 }
                 
             }
@@ -374,47 +366,28 @@ public class TaikoSongPlayer : MonoBehaviour
 
     static bool RoughlyEqual(float a, float b, float treshold)
     {
-        //Debug.Log(Mathf.Abs(a - b));
         return (Mathf.Abs(a - b) < treshold);
     }
 
     public void RegisterInput(DrumInputType NotePressed)
     {
         FindClosedNote(NotePressed);
-        Debug.Log("notepressed" + tick);
     }
 
     void FindClosedNote(DrumInputType NotePressed)
     {
-        
-        float tmpClosestNoteTime;
         float HittedTime = tick;
-        //Debug.Log(HittedTime);
-        //Debug.Log(NotePressed.ToString());
-        for(int i = 0; i < tmpNote.Count -1;i++)
+        for(int i = 0; i < CurrentNote.Count -1;i++)
         {
-            Note TmpForNote = tmpNote[i];
+            Note TmpForNote = CurrentNote[i].GetComponentInChildren<Note>();
             if (TmpForNote.CurrentNoteType != Taiko_Notes.bareline)
             {
-                if (HittedTime - TmpForNote.HitTime < .3f && CanHitThisNote(NotePressed, TmpForNote.CurrentNoteType))
+                if (HittedTime - TmpForNote.HitTime < .7f && CanHitThisNote(NotePressed, TmpForNote.CurrentNoteType))
                 {
                     TmpForNote.DestroyNote(true);
                 }
             }
         }
-        /*
-        foreach (Note tmpForNote in tmpNote)
-        {
-            if(tmpForNote.CurrentNoteType != Taiko_Notes.bareline)
-            {
-                if (HittedTime - tmpForNote.HitTime < .3f && CanHitThisNote(NotePressed, tmpForNote.CurrentNoteType))
-                {
-                    tmpForNote.DestroyNote();
-                }
-            }
-        }
-        */
-        //return null;
     }
 
     bool CanHitThisNote(DrumInputType NotePressed, Taiko_Notes NoteToCheck)

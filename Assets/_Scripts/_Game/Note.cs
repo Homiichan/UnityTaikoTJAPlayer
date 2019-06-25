@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [System.Serializable]
 public struct NoteMaterials
@@ -19,13 +20,22 @@ public class Note : MonoBehaviour
     //Pure Note Variable
     public Taiko_Notes CurrentNoteType = Taiko_Notes.Blank;
     public NoteData CurrentNoteData;
-    public float MeasureNumber;
+    float MeasureNumber;
     public float NoteBPM;
     Taiko_NoteState CurrentNoteState;
     bool IsHitted = false;
+    float SpawnNoteTime;
     public float HitTime;
+    public float CorrectHitTime;
     TaikoSongPlayer TGS;
-
+    float startPosY;
+    bool Move = false;
+    float NoteSpeed = 0;
+    float ScrollSpeed = 2;
+    public float NoteEndTime;
+    public TextMeshPro TMP;
+    float Tick = 0;
+    float lastpostion;
 
 
     // Start is called before the first frame update
@@ -37,28 +47,28 @@ public class Note : MonoBehaviour
     public List<NoteMaterials> MaterialsList = new List<NoteMaterials>();
     public NoteMaterials CurrentMaterialList = new NoteMaterials();
     public Renderer ChildRender;
+    float timer;
 
     void Start()
     {
-        TGS = GameObject.FindObjectOfType<TaikoSongPlayer>();
        
     }
 
-    public void OnSpawn(float secondsToTravel, Vector3 targetEndPoint, Taiko_Notes targetNoteType, float BPM, float NoteTime)
+    public void OnSpawn(float secondsToTravel, Vector3 targetEndPoint, Taiko_Notes targetNoteType, float BPM, float NoteTime, float elapsedTime)
     {
+        TGS = GameObject.FindObjectOfType<TaikoSongPlayer>();
         SecondsToTravel = secondsToTravel;
         CurrentNoteType = targetNoteType;
         CurrentNoteData.NoteType = targetNoteType;
         CurrentNoteData.NoteDurationMS = secondsToTravel;
         NoteBPM = BPM;
+        startPosY = transform.position.x;
         if (CurrentNoteType == Taiko_Notes.bareline)
         {
             Renderer rend;
             rend = GetComponent<Renderer>();
             rend.enabled = false;
             ChildRender.enabled = true;
-            //Destroy(GetComponent<Renderer>());
-            //Destroy(this.transform.parent.gameObject);
         }
         else
         {
@@ -72,14 +82,33 @@ public class Note : MonoBehaviour
             this.GetComponentInChildren<Renderer>().enabled = true;
             Destroy(this.GetComponent<Renderer>());
         }
-        EndPosition = targetEndPoint;
-        StartCoroutine(MoveToPosition(this.transform, EndPosition, SecondsToTravel));
-        HitTime = NoteTime + secondsToTravel;
         if (CurrentNoteType == Taiko_Notes.Blank)
         {
             DestroyNote(false);
-            //Destroy(this.transform.parent.gameObject);
         }
+        EndPosition = targetEndPoint;
+        float EndDistance = Vector3.Distance(transform.position, EndPosition);
+        float HitDistance = Vector3.Distance(transform.position, TGS.HitPoint.transform.position);
+        SpawnNoteTime = NoteTime;
+        NoteSpeed = EndDistance / (60000 / NoteBPM);
+        
+        NoteEndTime = EndDistance / (NoteSpeed / Time.deltaTime);
+        //
+        Debug.Log(NoteEndTime);
+        NoteEndTime = NoteEndTime + SpawnNoteTime;
+        HitTime = HitDistance / (NoteSpeed / Time.deltaTime);
+        HitTime = HitTime + SpawnNoteTime;
+        //NoteEndTime = NoteTime + (2.12f * 2);
+        Debug.Log("Note Speed = " + NoteSpeed + "PredictedTime = " + NoteEndTime);
+        Move = true;
+        PredictNoteEndTime();
+        //Debug.Log(Time.deltaTime);
+
+    }
+
+    void PredictNoteEndTime()
+    {
+
     }
     void SetNoteColorAndSize()
     {
@@ -151,8 +180,32 @@ public class Note : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(CurrentNoteType != Taiko_Notes.bareline)
-            SwitchTextureOnBPM();
+        Tick += Time.deltaTime;
+        TMP.text = timer.ToString();
+        timer -= Time.deltaTime;
+        
+        if (Move)
+        {
+            transform.position -= new Vector3((NoteSpeed * ScrollSpeed), 0,0);
+            //transform.position -= new Vector3(NoteBPM / 60, 0, 0);
+            if(SpawnNoteTime == 8.17f)
+            {
+                //Debug.Log(TGS.tick - TimeToTravel);
+                //Debug.Log(lastpostion - transform.position.x);
+                lastpostion = transform.position.x;
+            }
+             
+            if (TGS.tick >= NoteEndTime)
+            {
+                //DestroyNote(false);
+            }
+
+            if (timer >= (60f / NoteBPM)) {
+                Debug.Log("Beat");
+                timer = 0;
+            }
+
+        }
     }
     
     void SetNoteTexture(Texture targetTexture)
@@ -210,29 +263,69 @@ public class Note : MonoBehaviour
     public void DestroyNote(bool Hiited)
     {
         TGS = GameObject.FindObjectOfType<TaikoSongPlayer>();
-        //Debug.Log(TGS);
-        if (Contains(TGS.tmpNote, this))
+        if (CurrentNoteType != Taiko_Notes.bareline && CurrentNoteType != Taiko_Notes.Blank)
         {
-            if(Hiited)
+            //Debug.Log("Note Index = " + TGS.CurrentNote.IndexOf(this.transform.parent.gameObject));
+            if(TGS.CurrentNote.IndexOf(this.transform.parent.gameObject) != -1)
             {
-                if(this.GetComponent<AudioSource>() != null)
+                int NoteIndex = TGS.CurrentNote.IndexOf(this.transform.parent.gameObject);
+                if (Hiited)
                 {
-                    this.GetComponent<AudioSource>().Play();
+                    if (this.GetComponent<AudioSource>() != null)
+                    {
+                        this.GetComponent<AudioSource>().Play();
+                    }
+
+                    StopCoroutine(MoveToPosition(this.transform, EndPosition, SecondsToTravel));
+                    this.transform.parent.GetComponent<Animation>().Play();
+                    IsHitted = true;
+                    TGS.CurrentNote.RemoveAt(NoteIndex);
+                    StartCoroutine(DestroyAfterSeconds());
+                    Debug.Log("coucou");
+
                 }
-               
-                StopCoroutine(MoveToPosition(this.transform, EndPosition, SecondsToTravel));
-                this.transform.parent.GetComponent<Animation>().Play();
-                IsHitted = true;
-                StartCoroutine(DestroyAfterSeconds());
-                TGS.tmpNote.Remove(this);
+                else
+                {
+                    TGS.CurrentNote.RemoveAt(NoteIndex);
+                    Destroy(this.transform.parent.gameObject);
+                }
+                
             }
-            else
-            {
-                TGS.tmpNote.Remove(this);
-                Destroy(this.transform.parent.gameObject);
-            }
-            
         }
+        else
+        {
+            Destroy(this.transform.parent.gameObject);
+        }
+        
+        //Debug.Log(TGS);
+        /*
+        if (CurrentNoteType != Taiko_Notes.bareline && CurrentNoteType != Taiko_Notes.Blank)
+        {
+            if (Contains(TGS.CurrentNote, this))
+            {
+                Debug.Log("return true");
+                if (Hiited)
+                {
+                    
+                    Debug.Log("Note Index = " + TGS.CurrentNote.IndexOf(this.transform.gameObject));
+                    TGS.CurrentNote.RemoveAt(TGS.CurrentNote.IndexOf(this.transform.gameObject));
+                    //TGS.CurrentNote.Remove(this.gameObject);
+                }
+                else
+                {
+                    //TGS.CurrentNote.Remove(this.gameObject);
+                    Debug.Log("Note Index = " + TGS.CurrentNote.IndexOf(this.transform.gameObject));
+                    //TGS.CurrentNote.RemoveAt(TGS.CurrentNote.IndexOf(this.transform.gameObject));
+                    //Destroy(this.transform.parent.gameObject);
+                }
+
+            }
+        }
+        else
+        {
+            Destroy(this.transform.parent.gameObject);
+        }
+        */
     }
 
     public IEnumerator DestroyAfterSeconds()
@@ -240,14 +333,24 @@ public class Note : MonoBehaviour
         yield return new WaitForSeconds(1);
         Destroy(this.transform.parent.gameObject);
     }
-    bool Contains(List<Note> list, Note nameClass)
+    bool Contains(List<GameObject> list, Note nameClass)
     {
-        foreach (Note n in list)
+        foreach (GameObject n in list)
         {
-            if (n.HitTime == nameClass.HitTime)
+            if (n.GetComponentInChildren<Note>().HitTime == nameClass.HitTime)
             { return true; }
         }
         return false;
     }
+    
+    float UnitsToMovePerMs()
+    {
+        float beatsPerSeconds = 60 / NoteBPM;
+        float milliSecondsPerBeat = beatsPerSeconds / 1000;
+        float distToTravel = Vector3.Distance(new Vector3(59, 0, 51), new Vector3(-59, 0, 51));
+        //Debug.Log(distToTravel);
+        return distToTravel / beatsPerSeconds;
 
+    }
+    
 }
