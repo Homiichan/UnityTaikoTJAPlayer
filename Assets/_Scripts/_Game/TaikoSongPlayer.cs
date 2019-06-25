@@ -73,7 +73,7 @@ public class TaikoSongPlayer : MonoBehaviour
     void Update()
     {
         //Debug.Log("start pos = " + SpawnPoint.transform.position + "end point = " + EndPoint.transform.position);
-        text.text = tick.ToString();
+        //text.text = tick.ToString();
         if(SongHasStarted)
         {
             tick += Time.deltaTime;
@@ -377,13 +377,15 @@ public class TaikoSongPlayer : MonoBehaviour
     void FindClosedNote(DrumInputType NotePressed)
     {
         float HittedTime = tick;
+        Debug.Log("Hitted time = " + tick);
         for(int i = 0; i < CurrentNote.Count -1;i++)
         {
             Note TmpForNote = CurrentNote[i].GetComponentInChildren<Note>();
-            if (TmpForNote.CurrentNoteType != Taiko_Notes.bareline)
+            if (TmpForNote.CurrentNoteType != Taiko_Notes.bareline && TmpForNote.CurrentNoteType != Taiko_Notes.Blank)
             {
-                if (HittedTime - TmpForNote.HitTime < .7f && CanHitThisNote(NotePressed, TmpForNote.CurrentNoteType))
+                if (TmpForNote.HitTime -  HittedTime < .2f && CanHitThisNote(NotePressed, TmpForNote.CurrentNoteType))
                 {
+                    Debug.Log("Hitt time = " + TmpForNote.HitTime + "dif  =  " + (TmpForNote.HitTime - HittedTime));
                     TmpForNote.DestroyNote(true);
                 }
             }

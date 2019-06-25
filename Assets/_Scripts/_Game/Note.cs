@@ -91,15 +91,15 @@ public class Note : MonoBehaviour
         float HitDistance = Vector3.Distance(transform.position, TGS.HitPoint.transform.position);
         SpawnNoteTime = NoteTime;
         NoteSpeed = EndDistance / (60000 / NoteBPM);
-        
+        //Debug.Log(EndDistance + "   " + NoteSpeed);
         NoteEndTime = EndDistance / (NoteSpeed / Time.deltaTime);
         //
-        Debug.Log(NoteEndTime);
-        NoteEndTime = NoteEndTime + SpawnNoteTime;
+        //Debug.Log(NoteEndTime);
+        NoteEndTime = (NoteEndTime * (1 / ScrollSpeed)) + SpawnNoteTime;
         HitTime = HitDistance / (NoteSpeed / Time.deltaTime);
-        HitTime = HitTime + SpawnNoteTime;
+        HitTime = (HitTime * (1 / ScrollSpeed)) + SpawnNoteTime;
         //NoteEndTime = NoteTime + (2.12f * 2);
-        Debug.Log("Note Speed = " + NoteSpeed + "PredictedTime = " + NoteEndTime);
+        //Debug.Log("Note Speed = " + NoteSpeed + "PredictedTime = " + NoteEndTime);
         Move = true;
         PredictNoteEndTime();
         //Debug.Log(Time.deltaTime);
@@ -181,29 +181,21 @@ public class Note : MonoBehaviour
     void Update()
     {
         Tick += Time.deltaTime;
-        TMP.text = timer.ToString();
-        timer -= Time.deltaTime;
+        //TMP.text = timer.ToString();
+        //timer -= Time.deltaTime;
         
         if (Move)
         {
             transform.position -= new Vector3((NoteSpeed * ScrollSpeed), 0,0);
             //transform.position -= new Vector3(NoteBPM / 60, 0, 0);
-            if(SpawnNoteTime == 8.17f)
-            {
-                //Debug.Log(TGS.tick - TimeToTravel);
-                //Debug.Log(lastpostion - transform.position.x);
-                lastpostion = transform.position.x;
-            }
+           
              
             if (TGS.tick >= NoteEndTime)
             {
-                //DestroyNote(false);
+                DestroyNote(false);
+                //Debug.Log("destroy");
             }
 
-            if (timer >= (60f / NoteBPM)) {
-                Debug.Log("Beat");
-                timer = 0;
-            }
 
         }
     }
@@ -276,9 +268,10 @@ public class Note : MonoBehaviour
                         this.GetComponent<AudioSource>().Play();
                     }
 
-                    StopCoroutine(MoveToPosition(this.transform, EndPosition, SecondsToTravel));
+                    //StopCoroutine(MoveToPosition(this.transform, EndPosition, SecondsToTravel));
                     this.transform.parent.GetComponent<Animation>().Play();
                     IsHitted = true;
+                    Move = false;
                     TGS.CurrentNote.RemoveAt(NoteIndex);
                     StartCoroutine(DestroyAfterSeconds());
                     Debug.Log("coucou");
@@ -287,50 +280,26 @@ public class Note : MonoBehaviour
                 else
                 {
                     TGS.CurrentNote.RemoveAt(NoteIndex);
+                    //Debug.Log("try to destroy = + " + HitTime + CurrentNoteType.ToString());
                     Destroy(this.transform.parent.gameObject);
                 }
                 
             }
-        }
-        else
-        {
-            Destroy(this.transform.parent.gameObject);
-        }
-        
-        //Debug.Log(TGS);
-        /*
-        if (CurrentNoteType != Taiko_Notes.bareline && CurrentNoteType != Taiko_Notes.Blank)
-        {
-            if (Contains(TGS.CurrentNote, this))
+            else
             {
-                Debug.Log("return true");
-                if (Hiited)
-                {
-                    
-                    Debug.Log("Note Index = " + TGS.CurrentNote.IndexOf(this.transform.gameObject));
-                    TGS.CurrentNote.RemoveAt(TGS.CurrentNote.IndexOf(this.transform.gameObject));
-                    //TGS.CurrentNote.Remove(this.gameObject);
-                }
-                else
-                {
-                    //TGS.CurrentNote.Remove(this.gameObject);
-                    Debug.Log("Note Index = " + TGS.CurrentNote.IndexOf(this.transform.gameObject));
-                    //TGS.CurrentNote.RemoveAt(TGS.CurrentNote.IndexOf(this.transform.gameObject));
-                    //Destroy(this.transform.parent.gameObject);
-                }
-
+                Debug.Log("Bonsoir PARIIIS");
             }
         }
         else
         {
             Destroy(this.transform.parent.gameObject);
         }
-        */
     }
 
     public IEnumerator DestroyAfterSeconds()
     {
         yield return new WaitForSeconds(1);
+        Debug.Log("destry");
         Destroy(this.transform.parent.gameObject);
     }
     bool Contains(List<GameObject> list, Note nameClass)
