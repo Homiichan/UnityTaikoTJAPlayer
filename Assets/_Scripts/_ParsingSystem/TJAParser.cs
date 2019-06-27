@@ -273,25 +273,25 @@ public class TJAParser : MonoBehaviour
                     {
 
                         case "BPM":
-                            CurrentSongData.BPM = tryToParseFloatCheck(ParamInfo);
+                            CurrentSongData.BPM = tryToParseFloatCheck(ParamInfo, ParamName);
                             break;
 
                         case "OFFSET":
-                            //Debug.Log(CurrentSongData.TitleName + ParamInfo);
-                            CurrentSongData.Offset = tryToParseFloatCheck(ParamInfo);
+                            //Debug.Log(CurrentSongData.TitleName + ParamName);
+                            CurrentSongData.Offset = tryToParseFloatCheck(ParamInfo, ParamName);
                             
                             break;
 
                         case "SONGVOL":
-                            CurrentSongData.SongVolume = tryToParseFloatCheck(ParamInfo);
+                            CurrentSongData.SongVolume = tryToParseFloatCheck(ParamInfo, ParamName);
                             break;
 
                         case "SEVOL":
-                            CurrentSongData.SEVOL = tryToParseFloatCheck(ParamInfo);
+                            CurrentSongData.SEVOL = tryToParseFloatCheck(ParamInfo, ParamName);
                             break;
 
                         case "DEMOSTART":
-                            CurrentSongData.DEMOSTART = tryToParseFloatCheck(ParamInfo);
+                            CurrentSongData.DEMOSTART = tryToParseFloatCheck(ParamInfo, ParamName);
                             break;
 
                         case "SCOREMODE":
@@ -346,7 +346,7 @@ public class TJAParser : MonoBehaviour
                     if (CurrentCourseMeta <= CurrentSongData.AllSongDifficulty.Count - 1)
                     {
                         var Balloon = CurrentSongData.AllSongDifficulty[CurrentCourseMeta];
-                        Balloon.Balloon = tryToParseFloatCheck(ParamInfo);
+                        Balloon.Balloon = tryToParseFloatCheck(ParamInfo, ParamName);
                         CurrentSongData.AllSongDifficulty[CurrentCourseMeta] = Balloon;
                     }
                     else if (!isMultipleCourse)
@@ -452,22 +452,26 @@ public class TJAParser : MonoBehaviour
         return combinedPath;
     }
 
-    float tryToParseFloatCheck(string StrToParse)
+    float tryToParseFloatCheck(string StrToParse, string paramName)
     {
-        //float convertedFloat = 0;
-        /*
-        if (float.TryParse(StrToParse, out convertedFloat))
+        float convertedInt = 0;
+        string tmpstr = StrToParse;
+        //Debug.Log(CurrentSongData.TitleName + " "+ tmpstr + "   " + paramName);
+        //Debug.Log(" parse " + CurrentSongData.TitleName + StrToParse.Length);
+        if (float.TryParse(tmpstr, out convertedInt))
         {
-            return convertedFloat;
+            return convertedInt;
         }
         else
         {
+            //Debug.Log("can't parse " + CurrentSongData.TitleName + tmpstr.Length);
             return 0;
         }
-        */
-        return float.Parse(StrToParse, System.Globalization.CultureInfo.InvariantCulture.NumberFormat);
-
+        //float.TryParse(StrToParse, System.Globalization.CultureInfo.InvariantCulture.NumberFormat);
+        //return float.Parse(StrToParse, System.Globalization.CultureInfo.InvariantCulture);
     }
+
+    //public static bool TryParse(string s, System.Globalization.NumberStyles style, IFormatProvider provider, out float result);
 
     int tryToParseIntCheck(string StrToParse)
     {
@@ -478,6 +482,7 @@ public class TJAParser : MonoBehaviour
         }
         else
         {
+            Debug.Log("can't parse " + CurrentSongData.TitleName);
             return 0;
         }
 

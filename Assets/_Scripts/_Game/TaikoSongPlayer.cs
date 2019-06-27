@@ -331,8 +331,8 @@ public class TaikoSongPlayer : MonoBehaviour
         {
             CurrentNote.Add(tmpObject);
         }
-        tmpObject.GetComponentInChildren<Note>().OnSpawn(.7f, EndPoint.transform.position, NoteToSpawn, CurrentPlayingSong.BPM, spawnTime, tick);
-        tmpObject.name = tmpObject.GetComponentInChildren<Note>().HitTime.ToString();
+        tmpObject.GetComponent<Note>().OnSpawn(.7f, EndPoint.transform.position, NoteToSpawn, CurrentPlayingSong.BPM, spawnTime, tick);
+        tmpObject.name = tmpObject.GetComponent<Note>().HitTime.ToString();
 
 
 
@@ -380,7 +380,7 @@ public class TaikoSongPlayer : MonoBehaviour
         Debug.Log("Hitted time = " + tick);
         for(int i = 0; i < CurrentNote.Count -1;i++)
         {
-            Note TmpForNote = CurrentNote[i].GetComponentInChildren<Note>();
+            Note TmpForNote = CurrentNote[i].GetComponent<Note>();
             if (TmpForNote.CurrentNoteType != Taiko_Notes.bareline && TmpForNote.CurrentNoteType != Taiko_Notes.Blank)
             {
                 if (TmpForNote.HitTime -  HittedTime < .2f && CanHitThisNote(NotePressed, TmpForNote.CurrentNoteType))

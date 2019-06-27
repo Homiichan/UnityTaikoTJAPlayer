@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - UICenter
+  - AnimStartPoint
+  - PlayerLane
   layers:
   - Default
   - TransparentFX

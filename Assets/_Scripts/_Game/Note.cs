@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 [System.Serializable]
 public struct NoteMaterials
 {
     public Taiko_Notes Notes;
-    public Texture2D CloseTexture;
-    public Texture2D OpenTexture;
-    public Texture2D AngryTexture;
+    public Sprite CloseTexture;
+    public Sprite OpenTexture;
+    public Sprite AngryTexture;
     public NoteMaterials(NoteMaterials Template) { 
         this = Template;
     }
@@ -20,6 +21,7 @@ public class Note : MonoBehaviour
     //Pure Note Variable
     public Taiko_Notes CurrentNoteType = Taiko_Notes.Blank;
     public NoteData CurrentNoteData;
+    public Sprite Bareline;
     float MeasureNumber;
     public float NoteBPM;
     Taiko_NoteState CurrentNoteState;
@@ -33,7 +35,6 @@ public class Note : MonoBehaviour
     float NoteSpeed = 0;
     float ScrollSpeed = 2;
     public float NoteEndTime;
-    public TextMeshPro TMP;
     float Tick = 0;
     float lastpostion;
 
@@ -65,23 +66,14 @@ public class Note : MonoBehaviour
         startPosY = transform.position.x;
         if (CurrentNoteType == Taiko_Notes.bareline)
         {
-            Renderer rend;
-            rend = GetComponent<Renderer>();
-            rend.enabled = false;
-            ChildRender.enabled = true;
+            GetComponent<Image>().sprite = Bareline;
+            GetComponent<Image>().SetNativeSize();
         }
         else
         {
             FindCorrectNoteMaterial();
         }
         
-        
-        if(CurrentNoteType == Taiko_Notes.bareline)
-        {
-            this.GetComponent<Renderer>().enabled = false;
-            this.GetComponentInChildren<Renderer>().enabled = true;
-            Destroy(this.GetComponent<Renderer>());
-        }
         if (CurrentNoteType == Taiko_Notes.Blank)
         {
             DestroyNote(false);
@@ -200,11 +192,9 @@ public class Note : MonoBehaviour
         }
     }
     
-    void SetNoteTexture(Texture targetTexture)
+    void SetNoteTexture(Sprite targetTexture)
     {
-        noterender = this.GetComponent<Renderer>();
-        Material mat = GetComponent<Renderer>().material;
-        mat.SetTexture("_NoteTexture", targetTexture);
+        GetComponent<Image>().sprite = targetTexture;
     }
     public IEnumerator SwitchNoteTexture()
     {
@@ -258,9 +248,9 @@ public class Note : MonoBehaviour
         if (CurrentNoteType != Taiko_Notes.bareline && CurrentNoteType != Taiko_Notes.Blank)
         {
             //Debug.Log("Note Index = " + TGS.CurrentNote.IndexOf(this.transform.parent.gameObject));
-            if(TGS.CurrentNote.IndexOf(this.transform.parent.gameObject) != -1)
+            if(TGS.CurrentNote.IndexOf(this.transform.gameObject) != -1)
             {
-                int NoteIndex = TGS.CurrentNote.IndexOf(this.transform.parent.gameObject);
+                int NoteIndex = TGS.CurrentNote.IndexOf(this.gameObject);
                 if (Hiited)
                 {
                     if (this.GetComponent<AudioSource>() != null)
@@ -269,30 +259,32 @@ public class Note : MonoBehaviour
                     }
 
                     //StopCoroutine(MoveToPosition(this.transform, EndPosition, SecondsToTravel));
-                    this.transform.parent.GetComponent<Animation>().Play();
+                    
                     IsHitted = true;
                     Move = false;
                     TGS.CurrentNote.RemoveAt(NoteIndex);
+                    GetComponent<RectTransform>().anchoredPosition = GameObject.FindGameObjectWithTag("AnimStartPoint").GetComponent<RectTransform>().anchoredPosition;
+                    this.transform.GetComponent<Animation>().Play();
                     StartCoroutine(DestroyAfterSeconds());
-                    Debug.Log("coucou");
+                    //Debug.Log("coucou");
 
                 }
                 else
                 {
                     TGS.CurrentNote.RemoveAt(NoteIndex);
                     //Debug.Log("try to destroy = + " + HitTime + CurrentNoteType.ToString());
-                    Destroy(this.transform.parent.gameObject);
+                    Destroy(this.gameObject);
                 }
                 
             }
             else
             {
-                Debug.Log("Bonsoir PARIIIS");
+                //Debug.Log("Bonsoir PARIIIS");
             }
         }
         else
         {
-            Destroy(this.transform.parent.gameObject);
+            Destroy(this.gameObject);
         }
     }
 
@@ -300,7 +292,7 @@ public class Note : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         Debug.Log("destry");
-        Destroy(this.transform.parent.gameObject);
+        Destroy(this.gameObject);
     }
     bool Contains(List<GameObject> list, Note nameClass)
     {
