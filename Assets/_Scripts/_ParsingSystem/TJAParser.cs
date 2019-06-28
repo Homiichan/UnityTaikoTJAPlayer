@@ -26,7 +26,11 @@ public enum Taiko_Notes
     endBalloon,
     Kusudama,
     endKusudama,
-    bareline
+    bareline,
+    BPMChange,
+    MeasureChange,
+    GoGoStart,
+    GoGoEnd
 }
 
 [System.Serializable]
@@ -40,6 +44,9 @@ public struct NoteData
     public float Time;
     public float MeasureNumber;
     public bool HasBeenSpawned;
+    public float NoteBPM;
+    public bool IsGoGoTime;
+    public float ScrollSpeed;
 
     public NoteData(NoteData Template)
     {
@@ -399,7 +406,40 @@ public class TJAParser : MonoBehaviour
                         }
 
                     }
-                }
+
+                    if (CurrentLine.Substring(1).Contains("MEASURE"))
+                    {
+                        if (CurrentCourseMeta <= CurrentSongData.AllSongDifficulty.Count - 1)
+                        {
+                            TmpCourseData.Add(CurrentLine);
+                            CurrentStruc.SongData.Add(CurrentLine);
+                            CurrentSongData.AllSongDifficulty[CurrentCourseMeta].SongData.Add(CurrentLine);
+                            var Level = CurrentSongData.AllSongDifficulty[CurrentCourseMeta];
+                        }
+                    }
+                    if (CurrentLine.Substring(1).Contains("BPMCHANGE"))
+                    {
+                        if (CurrentCourseMeta <= CurrentSongData.AllSongDifficulty.Count - 1)
+                        {
+                            TmpCourseData.Add(CurrentLine);
+                            CurrentStruc.SongData.Add(CurrentLine);
+                            CurrentSongData.AllSongDifficulty[CurrentCourseMeta].SongData.Add(CurrentLine);
+                            var Level = CurrentSongData.AllSongDifficulty[CurrentCourseMeta];
+
+                        }
+                    }
+                    if (CurrentLine.Substring(1).Contains("SCROLL"))
+                    {
+                        if (CurrentCourseMeta <= CurrentSongData.AllSongDifficulty.Count - 1)
+                        {
+                            TmpCourseData.Add(CurrentLine);
+                            CurrentStruc.SongData.Add(CurrentLine);
+                            CurrentSongData.AllSongDifficulty[CurrentCourseMeta].SongData.Add(CurrentLine);
+                            var Level = CurrentSongData.AllSongDifficulty[CurrentCourseMeta];
+
+                        }
+                    }
+            }
                 if (inSong && CurrentLine[0] != '#')
                 {
                     if (CurrentCourseMeta <= CurrentSongData.AllSongDifficulty.Count - 1)
@@ -456,22 +496,18 @@ public class TJAParser : MonoBehaviour
     {
         float convertedInt = 0;
         string tmpstr = StrToParse;
-        //Debug.Log(CurrentSongData.TitleName + " "+ tmpstr + "   " + paramName);
-        //Debug.Log(" parse " + CurrentSongData.TitleName + StrToParse.Length);
-        if (float.TryParse(tmpstr, out convertedInt))
+
+        if (float.TryParse(tmpstr, System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture, out convertedInt))
         {
             return convertedInt;
         }
         else
         {
-            //Debug.Log("can't parse " + CurrentSongData.TitleName + tmpstr.Length);
+            Debug.Log("can't parse " + CurrentSongData.TitleName + "   " + tmpstr);
             return 0;
         }
-        //float.TryParse(StrToParse, System.Globalization.CultureInfo.InvariantCulture.NumberFormat);
-        //return float.Parse(StrToParse, System.Globalization.CultureInfo.InvariantCulture);
     }
 
-    //public static bool TryParse(string s, System.Globalization.NumberStyles style, IFormatProvider provider, out float result);
 
     int tryToParseIntCheck(string StrToParse)
     {

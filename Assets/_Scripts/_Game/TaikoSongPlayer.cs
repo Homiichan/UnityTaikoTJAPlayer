@@ -33,10 +33,7 @@ public class TaikoSongPlayer : MonoBehaviour
     public GameObject EndPoint;
     public GameObject ObjectToSpawn;
     public TextMeshPro text;
-    /// <summary>
-    /// parse data before or after parsing and convert course to custom struc circle with the spawn time in seconds or ms 
-    /// To calculate that we will be using measure and measurelenght etc
-    /// </summary>
+
     public List<NoteData> SongNoteData = new List<NoteData>();
     public List<string> tmpListData;
     public List<GameObject> CurrentNote = new List<GameObject>();
@@ -228,9 +225,12 @@ public class TaikoSongPlayer : MonoBehaviour
             tmpListData = new List<string>(CurrentPlayingSong.AllSongDifficulty[DiffToPlay].SongData);
             
             float CurrentMeasure = CalculateMeasureDataRework(4, 4);
+            float CurrentScroll = 2;
+            bool IsGoGoTime = false;
             Debug.Log(CurrentMeasure);
             var measureCount = 0;
             var nowTime = (long)(CurrentPlayingSong.Offset * 1000 * 1000.0) * -1;
+            float CurrentBPM = CurrentPlayingSong.BPM;
             Debug.Log(nowTime);
             for (int i = 0; i <= tmpListData.Count -1; i++)
             {
@@ -263,23 +263,74 @@ public class TaikoSongPlayer : MonoBehaviour
                         chip.Notedata = note.ToString();
                         //chip.IsHitted = false;
                         chip.HasBeenSpawned = false;
+                        chip.NoteBPM = CurrentBPM;
+                        chip.ScrollSpeed = CurrentScroll;
+                        chip.IsGoGoTime = IsGoGoTime;
                         //chip.IsGoGoTime = gogoTime;
-                        //chip.CanShow = true;
-                        //chip.Scroll = nowScroll;
                         //chip.Branch = nowBranch;
                         //chip.Branching = branching;
                         chip.Time = nowTime / 1000000f;
-                        //chip.Scroll = nowScroll;
                         chip.MeasureNumber = measureCount;
 
                         nowTime += timePerNotes;
-                        //var msPerMeasure = 60000 * measure / note.bpm
-                        //check 3
-
-                        // Listへ
                         SongNoteData.Add(new NoteData(chip));
-                        //list.Add(chip);
                     }
+                }
+                else if(tmpLine.StartsWith("#") && !tmpLine.StartsWith(","))
+                {
+                    Debug.Log("command = " + tmpLine);
+                    string tmpcommand = tmpLine.Substring(1);
+                    if(tmpcommand.Contains("MEASURE"))
+                    {
+                        string[] tempsMeasureSplit = tmpcommand.Split(' ');
+                        if (tempsMeasureSplit.Length > 1)
+                        {
+                            string[] tmpMeasureValue = tempsMeasureSplit[1].Split('/');
+                            //Debug.Log(tmpMeasureValue[0] + " " + tmpMeasureValue[1] + " " + CurrentMeasure);
+                            CurrentMeasure = CalculateMeasureDataRework(tryToParseFloatCheck(tmpMeasureValue[0]),tryToParseFloatCheck(tmpMeasureValue[1]));
+                        }    
+                    }
+
+                    if (tmpcommand.Contains("BPMCHANGE"))
+                    {
+                        string[] tempsBPMSplit = tmpcommand.Split(' ');
+                        if (tempsBPMSplit.Length > 1)
+                        {
+                            CurrentBPM = tryToParseFloatCheck(tempsBPMSplit[1]);
+                            //Debug.Log(CurrentBPM);
+                        }
+                    }
+
+                    if (tmpcommand.Contains("SCROLL"))
+                    {
+                        string[] tempScrollSplit = tmpcommand.Split(' ');
+                        if (tempScrollSplit.Length > 1)
+                        {
+                            CurrentScroll = tryToParseFloatCheck(tempScrollSplit[1]);
+                            Debug.Log(CurrentScroll);
+                        }
+                    }
+
+                    if (tmpcommand.Contains("SCROLL"))
+                    {
+                        string[] tempScrollSplit = tmpcommand.Split(' ');
+                        if (tempScrollSplit.Length > 1)
+                        {
+                            CurrentScroll = tryToParseFloatCheck(tempScrollSplit[1]);
+                            Debug.Log(CurrentScroll);
+                        }
+                    }
+
+                    if (tmpcommand.Contains("GOGOSTART"))
+                    {
+                        IsGoGoTime = true;
+                    }
+
+                    if (tmpcommand.Contains("GOGOEND"))
+                    {
+                        IsGoGoTime = false;
+                    }
+
                 }
                 var chipbareline = new NoteData();
                 //chip.ChipType = Chips.Note;
@@ -289,6 +340,7 @@ public class TaikoSongPlayer : MonoBehaviour
                 chipbareline.HasBeenSpawned = false;
                 //chip.IsGoGoTime = gogoTime;
                 //chip.CanShow = true;
+                chipbareline.NoteBPM = CurrentBPM;
                 //chip.Scroll = nowScroll;
                 //chip.Branch = nowBranch;
                 //chip.Branching = branching;
@@ -331,7 +383,7 @@ public class TaikoSongPlayer : MonoBehaviour
         {
             CurrentNote.Add(tmpObject);
         }
-        tmpObject.GetComponent<Note>().OnSpawn(.7f, EndPoint.transform.position, NoteToSpawn, CurrentPlayingSong.BPM, spawnTime, tick);
+        tmpObject.GetComponent<Note>().OnSpawn(EndPoint.transform.position, NoteToSpawn, CurrentPlayingSong.BPM, spawnTime, tick);
         tmpObject.name = tmpObject.GetComponent<Note>().HitTime.ToString();
 
 
@@ -377,7 +429,7 @@ public class TaikoSongPlayer : MonoBehaviour
     void FindClosedNote(DrumInputType NotePressed)
     {
         float HittedTime = tick;
-        Debug.Log("Hitted time = " + tick);
+        //Debug.Log("Hitted time = " + tick);
         for(int i = 0; i < CurrentNote.Count -1;i++)
         {
             Note TmpForNote = CurrentNote[i].GetComponent<Note>();
@@ -385,7 +437,7 @@ public class TaikoSongPlayer : MonoBehaviour
             {
                 if (TmpForNote.HitTime -  HittedTime < .2f && CanHitThisNote(NotePressed, TmpForNote.CurrentNoteType))
                 {
-                    Debug.Log("Hitt time = " + TmpForNote.HitTime + "dif  =  " + (TmpForNote.HitTime - HittedTime));
+                    //Debug.Log("Hitt time = " + TmpForNote.HitTime + "dif  =  " + (TmpForNote.HitTime - HittedTime));
                     TmpForNote.DestroyNote(true);
                 }
             }
@@ -404,6 +456,22 @@ public class TaikoSongPlayer : MonoBehaviour
         }
 
         return false;
+    }
+
+    float tryToParseFloatCheck(string StrToParse)
+    {
+        float convertedFloat = 0;
+        string tmpstr = StrToParse;
+
+        if (float.TryParse(tmpstr, System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture, out convertedFloat))
+        {
+            return convertedFloat;
+        }
+        else
+        {
+            Debug.Log("can;t parse = " + StrToParse);
+            return 0;
+        }
     }
 
 
