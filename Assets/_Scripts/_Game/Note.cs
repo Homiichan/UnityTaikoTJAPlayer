@@ -37,6 +37,7 @@ public class Note : MonoBehaviour
     public float NoteEndTime;
     float Tick = 0;
     float lastpostion;
+    bool IsGoGoTime = false;
    
 
     // Start is called before the first frame update
@@ -55,15 +56,28 @@ public class Note : MonoBehaviour
        
     }
 
-    public void OnSpawn(Vector3 targetEndPoint, Taiko_Notes targetNoteType, float BPM, float NoteTime, float elapsedTime)
+    public void OnSpawn(Vector3 targetEndPoint, Taiko_Notes targetNoteType, float BPM, float NoteTime, float elapsedTime, NoteData NoteData)
     {
         TGS = GameObject.FindObjectOfType<TaikoSongPlayer>();
         CurrentNoteType = targetNoteType;
         CurrentNoteData.NoteType = targetNoteType;
-        NoteBPM = BPM;
+        NoteBPM = NoteData.NoteBPM;
+        ScrollSpeed = NoteData.ScrollSpeed;
+        IsGoGoTime = NoteData.IsGoGoTime;
         startPosY = transform.position.x;
         EndPosition = targetEndPoint;
         SpawnNoteTime = NoteTime;
+        Debug.Log(NoteTime + targetNoteType.ToString());
+        if(CurrentNoteType == Taiko_Notes.bareline)
+        {
+            GetComponent<Image>().sprite = Bareline;
+            GetComponent<Image>().SetNativeSize();
+        }
+        if(CurrentNoteType == Taiko_Notes.Blank)
+        {
+            DestroyNote(false);
+        }
+        /*
         switch (CurrentNoteType)
         {
             case Taiko_Notes.bareline:
@@ -75,7 +89,7 @@ public class Note : MonoBehaviour
                 DestroyNote(false);
                 break;
         } 
-
+        */
         if(CurrentNoteType != Taiko_Notes.bareline)
         {
             FindCorrectNoteMaterial();
@@ -88,7 +102,7 @@ public class Note : MonoBehaviour
     void PredictNoteTime()
     {
         float EndDistance = Vector3.Distance(transform.position, EndPosition);
-        float HitDistance = Vector3.Distance(transform.position, TGS.HitPoint.transform.position);
+        float HitDistance = Vector3.Distance(transform.position, EndPosition);
         NoteSpeed = EndDistance / (60000 / NoteBPM);
         NoteEndTime = EndDistance / (NoteSpeed / Time.deltaTime);
         NoteEndTime = (NoteEndTime * (1 / ScrollSpeed)) + SpawnNoteTime;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.Networking;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class TaikoSongPlayer : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class TaikoSongPlayer : MonoBehaviour
     public GameObject SpawnPoint;
     public GameObject EndPoint;
     public GameObject ObjectToSpawn;
-    public TextMeshPro text;
+    public Text text;
 
     public List<NoteData> SongNoteData = new List<NoteData>();
     public List<string> tmpListData;
@@ -70,7 +71,7 @@ public class TaikoSongPlayer : MonoBehaviour
     void Update()
     {
         //Debug.Log("start pos = " + SpawnPoint.transform.position + "end point = " + EndPoint.transform.position);
-        //text.text = tick.ToString();
+        text.text = tick.ToString();
         if(SongHasStarted)
         {
             tick += Time.deltaTime;
@@ -373,7 +374,7 @@ public class TaikoSongPlayer : MonoBehaviour
         return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
     }
 
-    void SpawnNote(Taiko_Notes NoteToSpawn, float spawnTime)
+    void SpawnNote(Taiko_Notes NoteToSpawn, float spawnTime, NoteData NoteDataToSpawn)
     {
         GameObject tmpObject = Instantiate(ObjectToSpawn, SpawnPoint.transform.position, Quaternion.identity);
         tmpObject.transform.parent = this.transform;
@@ -383,7 +384,7 @@ public class TaikoSongPlayer : MonoBehaviour
         {
             CurrentNote.Add(tmpObject);
         }
-        tmpObject.GetComponent<Note>().OnSpawn(EndPoint.transform.position, NoteToSpawn, CurrentPlayingSong.BPM, spawnTime, tick);
+        tmpObject.GetComponent<Note>().OnSpawn(EndPoint.transform.position, NoteToSpawn, CurrentPlayingSong.BPM, spawnTime, tick, NoteDataToSpawn);
         tmpObject.name = tmpObject.GetComponent<Note>().HitTime.ToString();
 
 
@@ -396,21 +397,27 @@ public class TaikoSongPlayer : MonoBehaviour
         for (int i = 0; i < SongNoteData.Count - 1; i++)
         {
             NoteData tmpNoteData = SongNoteData[i];
-            if (RoughlyEqual(tmpNoteData.Time, tick, 0.01f))
+            if (tick >= tmpNoteData.Time)
             {
-                if(LasSpawnedNote != tmpNoteData.Time && tmpNoteData.NoteType != Taiko_Notes.bareline)
+                if(LasSpawnedNote != tmpNoteData.Time)
                 {
-                    SpawnNote(tmpNoteData.NoteType, tmpNoteData.Time);
+                    SpawnNote(tmpNoteData.NoteType, tmpNoteData.Time, tmpNoteData);
                     tmpNoteData.HasBeenSpawned = true;
                     LasSpawnedNote = tmpNoteData.Time;
                     LastSpawnNote = tmpNoteData.NoteType;
+                    SongNoteData.RemoveAt(i);
+                    break;
                 }
+                /*
                 else if(LastSpawnedBareline != tmpNoteData.Time && tmpNoteData.NoteType == Taiko_Notes.bareline)
                 {
-                    SpawnNote(tmpNoteData.NoteType, tmpNoteData.Time);
+                    SpawnNote(tmpNoteData.NoteType, tmpNoteData.Time, tmpNoteData);
                     tmpNoteData.HasBeenSpawned = true;
                     LastSpawnedBareline = tmpNoteData.Time;
+                    SongNoteData.RemoveAt(i);
+                    break;
                 }
+                */
                 
             }
         }
