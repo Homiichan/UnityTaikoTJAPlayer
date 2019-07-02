@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEditor;
-
+#if (UNITY_EDITOR) 
 [CustomEditor(typeof(TaikoCharacter))]
 public class AnimationTesterEditor : Editor
 {
@@ -16,3 +16,4 @@ public class AnimationTesterEditor : Editor
         }
     }
 }
+#endif

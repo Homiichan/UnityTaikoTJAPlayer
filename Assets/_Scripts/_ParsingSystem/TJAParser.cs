@@ -439,6 +439,28 @@ public class TJAParser : MonoBehaviour
 
                         }
                     }
+                    if (CurrentLine.Substring(1).Contains("GOGOSTART"))
+                    {
+                        if (CurrentCourseMeta <= CurrentSongData.AllSongDifficulty.Count - 1)
+                        {
+                            TmpCourseData.Add(CurrentLine);
+                            CurrentStruc.SongData.Add(CurrentLine);
+                            CurrentSongData.AllSongDifficulty[CurrentCourseMeta].SongData.Add(CurrentLine);
+                            var Level = CurrentSongData.AllSongDifficulty[CurrentCourseMeta];
+
+                        }
+                    }
+                    if (CurrentLine.Substring(1).Contains("GOGOEND"))
+                    {
+                        if (CurrentCourseMeta <= CurrentSongData.AllSongDifficulty.Count - 1)
+                        {
+                            TmpCourseData.Add(CurrentLine);
+                            CurrentStruc.SongData.Add(CurrentLine);
+                            CurrentSongData.AllSongDifficulty[CurrentCourseMeta].SongData.Add(CurrentLine);
+                            var Level = CurrentSongData.AllSongDifficulty[CurrentCourseMeta];
+
+                        }
+                    }
             }
                 if (inSong && CurrentLine[0] != '#')
                 {

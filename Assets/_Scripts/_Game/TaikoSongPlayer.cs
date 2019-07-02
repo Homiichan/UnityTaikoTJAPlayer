@@ -68,13 +68,13 @@ public class TaikoSongPlayer : MonoBehaviour
         
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //Debug.Log("start pos = " + SpawnPoint.transform.position + "end point = " + EndPoint.transform.position);
         text.text = tick.ToString();
         if(SongHasStarted)
         {
-            tick += Time.deltaTime;
+            tick += Time.fixedDeltaTime;
             //Debug.Log(tick);
             GetClosesNotes(tick);
         }
@@ -219,6 +219,9 @@ public class TaikoSongPlayer : MonoBehaviour
         
     }
 
+
+
+ 
     void ParseNoteData()
     {
         if (DiffToPlay != -1)
@@ -228,15 +231,21 @@ public class TaikoSongPlayer : MonoBehaviour
             float CurrentMeasure = CalculateMeasureDataRework(4, 4);
             float CurrentScroll = 2;
             bool IsGoGoTime = false;
-            Debug.Log(CurrentMeasure);
             var measureCount = 0;
-            var nowTime = (long)(CurrentPlayingSong.Offset * 1000 * 1000.0) * -1;
-            float CurrentBPM = CurrentPlayingSong.BPM;
+            var nowTime = (long)(CurrentPlayingSong.Offset * 1000.0) * -1;
             Debug.Log(nowTime);
+            float CurrentBPM = CurrentPlayingSong.BPM;
             for (int i = 0; i <= tmpListData.Count -1; i++)
             {
                 string tmpLine = tmpListData[i];
-                var timePerNotes = (long)(CurrentMeasure / CurrentPlayingSong.BPM / tmpLine.Length * 1000 * 1000.0);
+                //tmpLine = tmpLine.Replace(",", string.Empty);
+                var nowMeasureNote = 0;
+                if(!tmpLine.StartsWith("#"))
+                {
+                    nowMeasureNote = tmpLine.Length;
+                }
+                Debug.Log(tmpLine);
+                var timePerNotes = (long)(CurrentMeasure / CurrentBPM / nowMeasureNote * 1000.0);
                 /*
                 var measureChip = new NoteData();
                 measureChip.ChipType = Chips.Measure;
@@ -253,31 +262,30 @@ public class TaikoSongPlayer : MonoBehaviour
                 // Listへ
                 list.Add(measureChip);
                 */
-                if (!tmpLine.StartsWith("#") && !tmpLine.StartsWith(","))
+                if (!tmpLine.StartsWith("#") && !tmpLine.StartsWith("="))
                 {
                     // 音符
                     foreach (var note in tmpLine)
                     {
-                        var chip = new NoteData();
+                        var tmpNote = new NoteData();
                         //chip.ChipType = Chips.Note;
-                        chip.NoteType = stringToTaikoNote(note);
-                        chip.Notedata = note.ToString();
-                        //chip.IsHitted = false;
-                        chip.HasBeenSpawned = false;
-                        chip.NoteBPM = CurrentBPM;
-                        chip.ScrollSpeed = CurrentScroll;
-                        chip.IsGoGoTime = IsGoGoTime;
-                        //chip.IsGoGoTime = gogoTime;
-                        //chip.Branch = nowBranch;
-                        //chip.Branching = branching;
-                        chip.Time = nowTime / 1000000f;
-                        chip.MeasureNumber = measureCount;
+                        tmpNote.NoteType = stringToTaikoNote(note);
+                        tmpNote.Notedata = note.ToString();
+                        tmpNote.HasBeenSpawned = false;
+                        tmpNote.NoteBPM = CurrentBPM;
+                        tmpNote.ScrollSpeed = CurrentScroll;
+                        tmpNote.IsGoGoTime = IsGoGoTime;
+                        tmpNote.Time = nowTime / 1000f;
 
-                        nowTime += timePerNotes;
-                        SongNoteData.Add(new NoteData(chip));
+                        tmpNote.MeasureNumber = measureCount;
+                        //Debug.Log(nowTime);
+                        nowTime = nowTime + timePerNotes;
+                        //Debug.Log("measure = " + CurrentMeasure + "bpm = " + CurrentBPM + "line lenght = " + tmpLine.Length + "calculation = " + (tmpLine.Length * 1000) + "now time = " + nowTime + "Timer per note  = " + timePerNotes);
+                        SongNoteData.Add(new NoteData(tmpNote));
+                        //Debug.Log(nowTime);
                     }
                 }
-                else if(tmpLine.StartsWith("#") && !tmpLine.StartsWith(","))
+                else if(tmpLine.StartsWith("#") && !tmpLine.StartsWith("="))
                 {
                     Debug.Log("command = " + tmpLine);
                     string tmpcommand = tmpLine.Substring(1);
@@ -334,10 +342,8 @@ public class TaikoSongPlayer : MonoBehaviour
 
                 }
                 var chipbareline = new NoteData();
-                //chip.ChipType = Chips.Note;
                 chipbareline.NoteType = Taiko_Notes.bareline;
                 chipbareline.Notedata = "bareline";
-                //chip.IsHitted = false;
                 chipbareline.HasBeenSpawned = false;
                 //chip.IsGoGoTime = gogoTime;
                 //chip.CanShow = true;
@@ -345,11 +351,13 @@ public class TaikoSongPlayer : MonoBehaviour
                 //chip.Scroll = nowScroll;
                 //chip.Branch = nowBranch;
                 //chip.Branching = branching;
-                chipbareline.Time = nowTime / 1000000f;
+                chipbareline.Time = nowTime / 1000f;
+                chipbareline.ScrollSpeed = CurrentScroll;
                 //chip.Scroll = nowScroll;
                 //chip.BPM = nowBPM;
                 chipbareline.MeasureNumber = measureCount;
-
+                //chipbareline.Time = nowTime / 1000000f;
+                //nowTime += timePerNotes;
                 // ひとつ進める
                 //nowTime += timePerNotes;
                 //var msPerMeasure = 60000 * measure / note.bpm
@@ -366,6 +374,7 @@ public class TaikoSongPlayer : MonoBehaviour
 
     float CalculateMeasureDataRework(float Part, float Beat)
     {
+        Debug.Log("Recalculating Measure = " + (240 * (Part / Beat)));
         return 240 * (Part / Beat);
     }
 
@@ -374,10 +383,25 @@ public class TaikoSongPlayer : MonoBehaviour
         return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
     }
 
+    float NowMeasureNote(string str)
+    {
+        if(!str.StartsWith("#"))
+        {
+            str.Replace(',', '\0');
+            str.Trim();
+            Debug.Log(str);
+            return str.Length;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
     void SpawnNote(Taiko_Notes NoteToSpawn, float spawnTime, NoteData NoteDataToSpawn)
     {
         GameObject tmpObject = Instantiate(ObjectToSpawn, SpawnPoint.transform.position, Quaternion.identity);
-        tmpObject.transform.parent = this.transform;
+        tmpObject.transform.SetParent(this.transform, false);
         
         tmpObject.transform.position = SpawnPoint.transform.position;
         if(NoteToSpawn != Taiko_Notes.bareline && NoteToSpawn != Taiko_Notes.Blank)
@@ -385,7 +409,7 @@ public class TaikoSongPlayer : MonoBehaviour
             CurrentNote.Add(tmpObject);
         }
         tmpObject.GetComponent<Note>().OnSpawn(EndPoint.transform.position, NoteToSpawn, CurrentPlayingSong.BPM, spawnTime, tick, NoteDataToSpawn);
-        tmpObject.name = tmpObject.GetComponent<Note>().HitTime.ToString();
+        //tmpObject.name = tmpObject.GetComponent<Note>().HitTime.ToString();
 
 
 
@@ -397,9 +421,9 @@ public class TaikoSongPlayer : MonoBehaviour
         for (int i = 0; i < SongNoteData.Count - 1; i++)
         {
             NoteData tmpNoteData = SongNoteData[i];
-            if (tick >= tmpNoteData.Time)
+            if (RoughlyEqual(tmpNoteData.Time, tick, .01f))
             {
-                if(LasSpawnedNote != tmpNoteData.Time)
+                if(LasSpawnedNote != tmpNoteData.Time && tmpNoteData.NoteType != Taiko_Notes.bareline)
                 {
                     SpawnNote(tmpNoteData.NoteType, tmpNoteData.Time, tmpNoteData);
                     tmpNoteData.HasBeenSpawned = true;
@@ -408,7 +432,7 @@ public class TaikoSongPlayer : MonoBehaviour
                     SongNoteData.RemoveAt(i);
                     break;
                 }
-                /*
+                
                 else if(LastSpawnedBareline != tmpNoteData.Time && tmpNoteData.NoteType == Taiko_Notes.bareline)
                 {
                     SpawnNote(tmpNoteData.NoteType, tmpNoteData.Time, tmpNoteData);
@@ -417,7 +441,7 @@ public class TaikoSongPlayer : MonoBehaviour
                     SongNoteData.RemoveAt(i);
                     break;
                 }
-                */
+                
                 
             }
         }
@@ -442,7 +466,7 @@ public class TaikoSongPlayer : MonoBehaviour
             Note TmpForNote = CurrentNote[i].GetComponent<Note>();
             if (TmpForNote.CurrentNoteType != Taiko_Notes.bareline && TmpForNote.CurrentNoteType != Taiko_Notes.Blank)
             {
-                if (TmpForNote.HitTime -  HittedTime < .2f && CanHitThisNote(NotePressed, TmpForNote.CurrentNoteType))
+                if (TmpForNote.HitTime -  HittedTime < .4f && CanHitThisNote(NotePressed, TmpForNote.CurrentNoteType))
                 {
                     //Debug.Log("Hitt time = " + TmpForNote.HitTime + "dif  =  " + (TmpForNote.HitTime - HittedTime));
                     TmpForNote.DestroyNote(true);

@@ -66,7 +66,7 @@ public class TaikoGameInstance : MonoBehaviour
     public IEnumerator SwitchNoteTexture()
     {
 
-        yield return new WaitForSeconds((60000 / CurrentSongBPM) / 1000);
+        yield return new WaitForSeconds((60000 / CurrentSongBPM));
         if(CurrentNoteState == Taiko_NoteState.Mounth_Open)
         {
             CurrentNoteState = Taiko_NoteState.Mouth_Close;

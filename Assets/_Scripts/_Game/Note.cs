@@ -26,7 +26,7 @@ public class Note : MonoBehaviour
     public float NoteBPM;
     Taiko_NoteState CurrentNoteState;
     bool IsHitted = false;
-    float SpawnNoteTime;
+    public float SpawnNoteTime;
     public float HitTime;
     public float CorrectHitTime;
     TaikoSongPlayer TGS;
@@ -38,6 +38,8 @@ public class Note : MonoBehaviour
     float Tick = 0;
     float lastpostion;
     bool IsGoGoTime = false;
+    public float DebugEndDistance;
+    public float DebugHitDistance;
    
 
     // Start is called before the first frame update
@@ -67,7 +69,7 @@ public class Note : MonoBehaviour
         startPosY = transform.position.x;
         EndPosition = targetEndPoint;
         SpawnNoteTime = NoteTime;
-        Debug.Log(NoteTime + targetNoteType.ToString());
+        //Debug.Log(NoteTime + targetNoteType.ToString());
         if(CurrentNoteType == Taiko_Notes.bareline)
         {
             GetComponent<Image>().sprite = Bareline;
@@ -93,8 +95,10 @@ public class Note : MonoBehaviour
         if(CurrentNoteType != Taiko_Notes.bareline)
         {
             FindCorrectNoteMaterial();
+            //SetNoteColorAndSize();
         }
         PredictNoteTime();
+        this.gameObject.name = NoteData.Notedata;
         Move = true;
 
     }
@@ -102,12 +106,16 @@ public class Note : MonoBehaviour
     void PredictNoteTime()
     {
         float EndDistance = Vector3.Distance(transform.position, EndPosition);
-        float HitDistance = Vector3.Distance(transform.position, EndPosition);
+        float HitDistance = Vector3.Distance(transform.position, TGS.HitPoint.transform.position);
+        DebugEndDistance = EndDistance;
+        DebugHitDistance = HitDistance;
         NoteSpeed = EndDistance / (60000 / NoteBPM);
-        NoteEndTime = EndDistance / (NoteSpeed / Time.deltaTime);
+        //Debug.Log("end distance = " + EndDistance + "hit distance = " + HitDistance + "speed = " + NoteSpeed + "spawn time " + SpawnNoteTime + "delta time = " + Time.deltaTime);
+        NoteEndTime = EndDistance / (NoteSpeed / Time.fixedDeltaTime);
         NoteEndTime = (NoteEndTime * (1 / ScrollSpeed)) + SpawnNoteTime;
-        HitTime = HitDistance / (NoteSpeed / Time.deltaTime);
+        HitTime = HitDistance / (NoteSpeed / Time.fixedDeltaTime);
         HitTime = (HitTime * (1 / ScrollSpeed)) + SpawnNoteTime;
+        //Debug.Break();
 
     }
     void SetNoteColorAndSize()
@@ -116,10 +124,10 @@ public class Note : MonoBehaviour
         switch (CurrentNoteType)
         {
             case Taiko_Notes.BigKa:
-                this.gameObject.transform.localScale = new Vector3(1, 1, 1);
+                this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1.5f, 1.5f, 1);
                 break;
             case Taiko_Notes.BigDrumRoll:
-                this.gameObject.transform.localScale = new Vector3(1, 1, 1);
+                this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1.5f, 1.5f, 1);
                 break;
         }
 
@@ -140,7 +148,7 @@ public class Note : MonoBehaviour
         }
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Tick += Time.deltaTime;
         SwitchNoteTexture();
@@ -150,9 +158,9 @@ public class Note : MonoBehaviour
             //transform.position -= new Vector3(NoteBPM / 60, 0, 0);
            
              
-            if (TGS.tick >= NoteEndTime)
+            if (TGS.tick >= HitTime)
             {
-                DestroyNote(false);
+                DestroyNote(true);
             }
 
 
@@ -161,7 +169,8 @@ public class Note : MonoBehaviour
     
     void SetNoteTexture(Sprite targetTexture)
     {
-        GetComponent<Image>().sprite = targetTexture;
+        if(this != null)
+            GetComponent<Image>().sprite = targetTexture;
     }
     public IEnumerator SwitchNoteTexture()
     {
