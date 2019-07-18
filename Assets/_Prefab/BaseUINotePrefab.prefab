@@ -114,11 +114,25 @@ MonoBehaviour:
     Time: 0
     MeasureNumber: 0
     HasBeenSpawned: 0
+    NoteBPM: 0
+    IsGoGoTime: 0
+    ScrollSpeed: 0
+    IsSliderNote: 0
+    IsBalloon: 0
   Bareline: {fileID: 21300000, guid: a0358f4ee40758a4585b28513a2a5478, type: 3}
   NoteBPM: 0
+  SpawnNoteTime: 0
   HitTime: 0
   CorrectHitTime: 0
   NoteEndTime: 0
+  DebugEndDistance: 0
+  DebugHitDistance: 0
+  IsSlider: 0
+  IsBalloon: 0
+  BalloonMiddle: {fileID: 595674865766945527, guid: c6dc186c1c2be2240adc6223e705a743,
+    type: 3}
+  EndBalloon: {fileID: -733219096263470103, guid: c6dc186c1c2be2240adc6223e705a743,
+    type: 3}
   MaterialsList:
   - Notes: 1
     CloseTexture: {fileID: 21300000, guid: 15bbb2567185d4241a1aa6df1a44cd06, type: 3}

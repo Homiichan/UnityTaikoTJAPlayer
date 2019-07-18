@@ -47,6 +47,8 @@ public struct NoteData
     public float NoteBPM;
     public bool IsGoGoTime;
     public float ScrollSpeed;
+    public bool IsSliderNote;
+    public bool IsBalloon;
 
     public NoteData(NoteData Template)
     {

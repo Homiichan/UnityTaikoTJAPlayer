@@ -233,6 +233,8 @@ public class TaikoSongPlayer : MonoBehaviour
             bool IsGoGoTime = false;
             var measureCount = 0;
             var nowTime = (long)(CurrentPlayingSong.Offset * 1000.0) * -1;
+            bool InScroll = false;
+            bool InBalloon = false;
             Debug.Log(nowTime);
             float CurrentBPM = CurrentPlayingSong.BPM;
             for (int i = 0; i <= tmpListData.Count -1; i++)
@@ -269,6 +271,29 @@ public class TaikoSongPlayer : MonoBehaviour
                     {
                         var tmpNote = new NoteData();
                         //chip.ChipType = Chips.Note;
+                        switch(note)
+                        {
+                            case '5' :
+                                InScroll = true;
+                                break;
+
+                            case '6':
+                                InScroll = true;
+                                break;
+
+                            case '7' :
+                                InBalloon = true;
+                                break;
+
+                            case '8' :
+                                InBalloon = false;
+                                InScroll = false;
+                                break;
+
+                            case '9':
+                                InBalloon = true;
+                                break;
+                        }
                         tmpNote.NoteType = stringToTaikoNote(note);
                         tmpNote.Notedata = note.ToString();
                         tmpNote.HasBeenSpawned = false;
@@ -276,7 +301,8 @@ public class TaikoSongPlayer : MonoBehaviour
                         tmpNote.ScrollSpeed = CurrentScroll;
                         tmpNote.IsGoGoTime = IsGoGoTime;
                         tmpNote.Time = nowTime / 1000f;
-
+                        tmpNote.IsBalloon = InBalloon;
+                        tmpNote.IsSliderNote = InScroll;
                         tmpNote.MeasureNumber = measureCount;
                         //Debug.Log(nowTime);
                         nowTime = nowTime + timePerNotes;
@@ -504,6 +530,8 @@ public class TaikoSongPlayer : MonoBehaviour
             return 0;
         }
     }
+
+
 
 
 }

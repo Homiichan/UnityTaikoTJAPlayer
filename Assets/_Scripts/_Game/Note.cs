@@ -31,7 +31,7 @@ public class Note : MonoBehaviour
     public float CorrectHitTime;
     TaikoSongPlayer TGS;
     float startPosY;
-    bool Move = false;
+    bool Move = true;
     float NoteSpeed = 0;
     float ScrollSpeed = 2;
     public float NoteEndTime;
@@ -40,6 +40,11 @@ public class Note : MonoBehaviour
     bool IsGoGoTime = false;
     public float DebugEndDistance;
     public float DebugHitDistance;
+    public bool IsSlider = false;
+    public bool IsBalloon = false;
+
+    public Sprite BalloonMiddle;
+    public Sprite EndBalloon;
    
 
     // Start is called before the first frame update
@@ -69,18 +74,9 @@ public class Note : MonoBehaviour
         startPosY = transform.position.x;
         EndPosition = targetEndPoint;
         SpawnNoteTime = NoteTime;
-        //Debug.Log(NoteTime + targetNoteType.ToString());
-        if(CurrentNoteType == Taiko_Notes.bareline)
-        {
-            GetComponent<Image>().sprite = Bareline;
-            GetComponent<Image>().SetNativeSize();
-        }
-        if(CurrentNoteType == Taiko_Notes.Blank)
-        {
-            DestroyNote(false);
-        }
-        /*
-        switch (CurrentNoteType)
+        IsSlider = NoteData.IsSliderNote;
+        IsBalloon = NoteData.IsBalloon;
+        switch(CurrentNoteType)
         {
             case Taiko_Notes.bareline:
                 GetComponent<Image>().sprite = Bareline;
@@ -88,14 +84,36 @@ public class Note : MonoBehaviour
                 break;
 
             case Taiko_Notes.Blank:
-                DestroyNote(false);
-                break;
-        } 
-        */
-        if(CurrentNoteType != Taiko_Notes.bareline)
+                if (IsSlider)
+                {
+                    GetComponent<Image>().sprite = BalloonMiddle;
+                    GetComponent<Image>().SetNativeSize();
+                    StartCoroutine(SwitchNoteTexture());
+                    GetComponent<Image>().type = Image.Type.Tiled;
+                    GetComponent<RectTransform>().pivot = new Vector2(0, .5f);
+                    break;
+                }
+                else
+                {
+                    DestroyNote(false);
+                    break;
+                }
+
+            case Taiko_Notes.endBalloon:
+                if(!IsSlider)
+                {
+                    GetComponent<Image>().sprite = EndBalloon;
+                    GetComponent<Image>().SetNativeSize();
+                    break;
+                }
+                else
+                {
+                    break;
+                }
+        }
+        if(CurrentNoteType != Taiko_Notes.bareline && CurrentNoteType != Taiko_Notes.Blank && CurrentNoteType != Taiko_Notes.endBalloon)
         {
             FindCorrectNoteMaterial();
-            //SetNoteColorAndSize();
         }
         PredictNoteTime();
         this.gameObject.name = NoteData.Notedata;
@@ -155,14 +173,20 @@ public class Note : MonoBehaviour
         if (Move)
         {
             transform.position -= new Vector3((NoteSpeed * ScrollSpeed), 0,0);
-            //transform.position -= new Vector3(NoteBPM / 60, 0, 0);
            
              
             if (TGS.tick >= HitTime)
             {
-                DestroyNote(true);
+                if(CurrentNoteType != Taiko_Notes.DrumRoll && CurrentNoteType != Taiko_Notes.endBalloon && !IsSlider)
+                {
+                    DestroyNote(true);
+                }
+                    
             }
-
+            if (TGS.tick >= NoteEndTime)
+            {
+                DestroyNote(false);
+            }
 
         }
     }
@@ -174,7 +198,9 @@ public class Note : MonoBehaviour
     }
     public IEnumerator SwitchNoteTexture()
     {
-        yield return new WaitForSeconds((60000 / NoteBPM) / 1000);
+        yield return new WaitForSeconds(NoteSpeed);
+        Debug.Log("mdr");
+        StartCoroutine(SwitchNoteTexture());
     }
 
     void SwitchTextureOnBPM()
@@ -252,6 +278,12 @@ public class Note : MonoBehaviour
             { return true; }
         }
         return false;
+    }
+
+    IEnumerator SpawnBalloon(float spawnInterval)
+    {
+        yield return new WaitForSeconds(spawnInterval);
+
     }
     
     
