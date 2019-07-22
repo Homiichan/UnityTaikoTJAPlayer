@@ -235,12 +235,14 @@ public class TaikoSongPlayer : MonoBehaviour
             var nowTime = (long)(CurrentPlayingSong.Offset * 1000.0) * -1;
             bool InScroll = false;
             bool InBalloon = false;
-            Debug.Log(nowTime);
+            NoteData CurrentNoteData = new NoteData();
+            int NoteNumber = 0;
+            int currentNoteNumber = 0;
+            //Debug.Log(nowTime);
             float CurrentBPM = CurrentPlayingSong.BPM;
             for (int i = 0; i <= tmpListData.Count -1; i++)
             {
                 string tmpLine = tmpListData[i];
-                //tmpLine = tmpLine.Replace(",", string.Empty);
                 var nowMeasureNote = 0;
                 if(!tmpLine.StartsWith("#"))
                 {
@@ -249,20 +251,11 @@ public class TaikoSongPlayer : MonoBehaviour
                 Debug.Log(tmpLine);
                 var timePerNotes = (long)(CurrentMeasure / CurrentBPM / nowMeasureNote * 1000.0);
                 /*
-                var measureChip = new NoteData();
-                measureChip.ChipType = Chips.Measure;
-                measureChip.IsHitted = false;
-                measureChip.IsGoGoTime = gogoTime;
                 measureChip.CanShow = true;
                 measureChip.Scroll = nowScroll;
                 measureChip.Branch = nowBranch;
                 measureChip.Branching = branching;
                 measureChip.Time = nowTime;
-                measureChip.Scroll = nowScroll;
-                measureChip. = nowBPM;
-                measureChip.MeasureNumber = measureCount;
-                // Listへ
-                list.Add(measureChip);
                 */
                 if (!tmpLine.StartsWith("#") && !tmpLine.StartsWith("="))
                 {
@@ -270,24 +263,34 @@ public class TaikoSongPlayer : MonoBehaviour
                     foreach (var note in tmpLine)
                     {
                         var tmpNote = new NoteData();
-                        //chip.ChipType = Chips.Note;
-                        switch(note)
+                        tmpNote.Time = nowTime / 1000f;
+                        nowTime = nowTime + timePerNotes;
+                        NoteNumber++;
+                        switch (note)
                         {
                             case '5' :
                                 InScroll = true;
+                                currentNoteNumber = NoteNumber;
                                 break;
 
                             case '6':
                                 InScroll = true;
+                                currentNoteNumber = NoteNumber;
                                 break;
 
                             case '7' :
                                 InBalloon = true;
+                                
                                 break;
 
                             case '8' :
                                 InBalloon = false;
                                 InScroll = false;
+                                var test = new NoteData(SongNoteData[currentNoteNumber]);
+                                test.DrumRollEndTime = nowTime;
+                                Debug.Log("current text" + test.Time + " " + nowTime);
+                                SongNoteData[currentNoteNumber] = new NoteData(test);
+                                //SongNoteData.
                                 break;
 
                             case '9':
@@ -300,15 +303,13 @@ public class TaikoSongPlayer : MonoBehaviour
                         tmpNote.NoteBPM = CurrentBPM;
                         tmpNote.ScrollSpeed = CurrentScroll;
                         tmpNote.IsGoGoTime = IsGoGoTime;
-                        tmpNote.Time = nowTime / 1000f;
+                        
                         tmpNote.IsBalloon = InBalloon;
                         tmpNote.IsSliderNote = InScroll;
                         tmpNote.MeasureNumber = measureCount;
-                        //Debug.Log(nowTime);
-                        nowTime = nowTime + timePerNotes;
                         //Debug.Log("measure = " + CurrentMeasure + "bpm = " + CurrentBPM + "line lenght = " + tmpLine.Length + "calculation = " + (tmpLine.Length * 1000) + "now time = " + nowTime + "Timer per note  = " + timePerNotes);
                         SongNoteData.Add(new NoteData(tmpNote));
-                        //Debug.Log(nowTime);
+                        
                     }
                 }
                 else if(tmpLine.StartsWith("#") && !tmpLine.StartsWith("="))
@@ -427,7 +428,7 @@ public class TaikoSongPlayer : MonoBehaviour
     void SpawnNote(Taiko_Notes NoteToSpawn, float spawnTime, NoteData NoteDataToSpawn)
     {
         GameObject tmpObject = Instantiate(ObjectToSpawn, SpawnPoint.transform.position, Quaternion.identity);
-        tmpObject.transform.SetParent(this.transform, false);
+        tmpObject.transform.SetParent(SpawnPoint.transform, false);
         
         tmpObject.transform.position = SpawnPoint.transform.position;
         if(NoteToSpawn != Taiko_Notes.bareline && NoteToSpawn != Taiko_Notes.Blank)

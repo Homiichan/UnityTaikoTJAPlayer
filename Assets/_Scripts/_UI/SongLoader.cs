@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using UnityEngine.UI.ScrollSnaps;
 
 public class SongLoader : MonoBehaviour
 {
@@ -51,14 +52,16 @@ public class SongLoader : MonoBehaviour
             //newSpawn Position
             Vector3 pos = new Vector3(SpawnPoint.position.x, SpawnPoint.position.y, SpawnPoint.position.z);
             //instantiate item
-            GameObject SpawnedItem = Instantiate(item, pos, SpawnPoint.rotation);
+            GameObject SpawnedItem = Instantiate(item, new Vector3(100,-100,0), SpawnPoint.rotation);
             //setParent
             SpawnedItem.transform.SetParent(SpawnPoint.transform, false);
+            //SpawnedItem.transform.position = SpawnPoint.transform.position;
             //get ItemDetails Component
+            GetComponent<DirectionalScrollSnap>().InsertChild(SpawnedItem.GetComponent<RectTransform>(), SpawnedItem.transform.position, 20, 20, true);
             SpawnedItem.GetComponent<LevelTemplate>().AssignStruc(TGI.TJAFileAvailable[i], i);
             UICreated.Add(SpawnedItem);
         }
-        gameObject.GetComponent<ScrollRect>().normalizedPosition = new Vector2(0,0);
+        //gameObject.GetComponent<ScrollRect>().normalizedPosition = new Vector2(0,0);
 
     }
 
@@ -68,7 +71,7 @@ public class SongLoader : MonoBehaviour
         {
             ActivePreviewSong = CurrentActiveSong;
             Debug.Log(CurrentActiveSong.TitleName);
-            AS.Stop();
+            //AS.Stop();
             CurrentAudioType = GetAudioTypeBasedOnPath(ActivePreviewSong.SoundWavePath);
             StartCoroutine(LoadAlbumAudio(AS));
 

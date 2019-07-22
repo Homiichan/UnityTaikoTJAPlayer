@@ -41,7 +41,7 @@ public class LevelTemplate : MonoBehaviour
     {
         x = Screen.width / 2;
         y = Screen.width / 2;
-        distance = Vector3.Distance(Center.transform.position, transform.position);
+        //distance = Vector3.Distance(Center.transform.position, transform.position);
 
         if (distance <= 30)
         {
@@ -59,6 +59,19 @@ public class LevelTemplate : MonoBehaviour
         }
     }
 
+    public void OnSelected()
+    {
+        Animator tmpAnimator = gameObject.GetComponent<Animator>();
+        tmpAnimator.SetFloat("AnimationSpeed", 1);
+        tmpAnimator.Play("UIExpansion");
+    }
+
+    public void OnDeselected()
+    {
+        Animator tmpAnimator = gameObject.GetComponent<Animator>();
+        tmpAnimator.SetFloat("AnimationSpeed", -1);
+        tmpAnimator.Play("UIExpansion");
+    }
     public void AssignStruc(TaikoSongContainer strucToSet, int CurrentSongIndex)
     {
         SongInside = strucToSet;

@@ -49,6 +49,7 @@ public struct NoteData
     public float ScrollSpeed;
     public bool IsSliderNote;
     public bool IsBalloon;
+    public float DrumRollEndTime;
 
     public NoteData(NoteData Template)
     {

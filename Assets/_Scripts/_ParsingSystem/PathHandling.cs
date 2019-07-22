@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.IO;
 using TMPro;
 using SFB;
+using UnityEngine.UI.ScrollSnaps;
 
 public class PathHandling : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PathHandling : MonoBehaviour
     public TJAParser TJAParser;
     public Button BrowseFolderButton;
     string TJASongPath = "";
+    public DirectionalScrollSnap DSS;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,9 +43,19 @@ public class PathHandling : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButtonDown("RightDon"))
+        {
+            DSS.OnForward();
+        }
+        if (Input.GetButtonDown("LeftDon"))
+        {
+            DSS.OnBack();
+        }
     }
-
+    public void ItemSelected(int selected)
+    {
+        Debug.Log(selected);
+    }
     public void OnValueChange(string Path)
     {
         TJASongPath = Path;
