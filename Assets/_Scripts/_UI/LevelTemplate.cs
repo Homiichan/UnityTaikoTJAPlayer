@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LevelTemplate : MonoBehaviour
 {
     
     public TaikoSongContainer SongInside;
 
-    public Text text = null;
+    public TextMeshProUGUI text = null;
 
-    public Dropdown Drop = null;
     List<string> m_DropOptions = new List<string> {};
     public TaikoGameInstance TGI = null;
     public Taiko_Difficulty CurrentSelectedDif = Taiko_Difficulty.Dif_Oni;
@@ -19,44 +19,19 @@ public class LevelTemplate : MonoBehaviour
     GameObject Center;
     SongLoader SL;
     bool TimeStart = false;
-    int x;
-    int y;
-    float distance;
 
     // Start is called before the first frame update
     void Start()
     {
         TGI = GameObject.FindObjectOfType<TaikoGameInstance>();
         SL = GameObject.FindObjectOfType<SongLoader>();
-        Drop.onValueChanged.AddListener(delegate
-        {
-            DropdownValueChanged(Drop);
-        });
-        Center = GameObject.FindGameObjectWithTag("UICenter");
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        x = Screen.width / 2;
-        y = Screen.width / 2;
-        //distance = Vector3.Distance(Center.transform.position, transform.position);
-
-        if (distance <= 30)
-        {
-            //Debug.Log(SongInside.TitleName);
-            if(!TimeStart)
-            {
-                StartCoroutine(test());
-                TimeStart = true;
-            }
-        }
-        else
-        {
-            StopCoroutine(test());
-            TimeStart = false;
-        }
+      
     }
 
     public void OnSelected()
@@ -81,7 +56,6 @@ public class LevelTemplate : MonoBehaviour
         {
             m_DropOptions.Add(currentstruc.Difficulty.ToString());
         }
-        Drop.AddOptions(m_DropOptions);
         SongIndex = CurrentSongIndex;
     }
 
@@ -94,9 +68,11 @@ public class LevelTemplate : MonoBehaviour
 
     void DropdownValueChanged(Dropdown change)
     {
+        /*
         Debug.Log(Drop.options[change.value].text);
         CurrentSelectedDif = ParseDifficultyByString(Drop.options[change.value].text);
         Debug.Log("SelectedDif = " + CurrentSelectedDif);
+        */
         
     }
 
@@ -117,13 +93,6 @@ public class LevelTemplate : MonoBehaviour
                 return Taiko_Difficulty.Dif_Edit;
         }
         return Taiko_Difficulty.Dif_Oni;
-    }
-
-    IEnumerator test()
-    {
-        yield return new WaitForSeconds(3);
-        if (distance <= 30)
-            SL.OnSongSwitch(SongInside);
     }
 
 

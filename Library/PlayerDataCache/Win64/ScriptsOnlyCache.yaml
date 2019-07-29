@@ -5,20 +5,19 @@ ScriptsOnlyBuild:
     - LevelTemplate
     - Note
     - PathHandling
+    - RawImageScroll
     - SongLoader
     - TJAParser
-    - TaikoCharacter
     - TaikoGameInstance
     - TaikoSongPlayer
+    - UnityEngine.UI.ScrollSnaps.DirectionalScrollSnap
     Unity.RenderPipelines.Lightweight.Runtime.dll:
     - UnityEngine.Rendering.LWRP.ForwardRendererData
     - UnityEngine.Rendering.LWRP.LightweightRenderPipelineAsset
     - UnityEngine.Rendering.LWRP.LightweightRenderPipelineEditorResources
     Unity.TextMeshPro.dll:
     - TMPro.TMP_ColorGradient
-    - TMPro.TMP_Dropdown
     - TMPro.TMP_FontAsset
-    - TMPro.TMP_InputField
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
@@ -31,17 +30,16 @@ ScriptsOnlyBuild:
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
-    - UnityEngine.UI.ContentSizeFitter
     - UnityEngine.UI.Dropdown
     - UnityEngine.UI.GraphicRaycaster
-    - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
     - UnityEngine.UI.Mask
-    - UnityEngine.UI.RectMask2D
+    - UnityEngine.UI.RawImage
     - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Text
     - UnityEngine.UI.Toggle
+    - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
     Assets/Scenes/GameScene.unity:
     - Class: 1
@@ -79,27 +77,27 @@ ScriptsOnlyBuild:
     - Class: 111
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9646}
-    - Class: 114
       Script: {instanceID: 9652}
     - Class: 114
       Script: {instanceID: 9658}
     - Class: 114
-      Script: {instanceID: 9666}
+      Script: {instanceID: 9664}
     - Class: 114
-      Script: {instanceID: 9702}
+      Script: {instanceID: 9672}
     - Class: 114
-      Script: {instanceID: 9704}
+      Script: {instanceID: 9708}
     - Class: 114
-      Script: {instanceID: 10772}
+      Script: {instanceID: 9710}
     - Class: 114
-      Script: {instanceID: 10982}
+      Script: {instanceID: 10784}
     - Class: 114
-      Script: {instanceID: 11064}
+      Script: {instanceID: 10998}
     - Class: 114
-      Script: {instanceID: 11230}
+      Script: {instanceID: 11080}
     - Class: 114
-      Script: {instanceID: 11880}
+      Script: {instanceID: 11246}
+    - Class: 114
+      Script: {instanceID: 11898}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -137,6 +135,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
@@ -144,70 +146,64 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9410}
+      Script: {instanceID: 9540}
     - Class: 114
-      Script: {instanceID: 9452}
+      Script: {instanceID: 9552}
     - Class: 114
-      Script: {instanceID: 9534}
-    - Class: 114
-      Script: {instanceID: 9546}
-    - Class: 114
-      Script: {instanceID: 9558}
-    - Class: 114
-      Script: {instanceID: 9644}
-    - Class: 114
-      Script: {instanceID: 9646}
-    - Class: 114
-      Script: {instanceID: 9648}
+      Script: {instanceID: 9564}
     - Class: 114
       Script: {instanceID: 9650}
     - Class: 114
       Script: {instanceID: 9652}
     - Class: 114
+      Script: {instanceID: 9656}
+    - Class: 114
       Script: {instanceID: 9658}
     - Class: 114
-      Script: {instanceID: 9662}
+      Script: {instanceID: 9664}
     - Class: 114
-      Script: {instanceID: 9666}
+      Script: {instanceID: 9672}
     - Class: 114
-      Script: {instanceID: 9674}
-    - Class: 114
-      Script: {instanceID: 9690}
-    - Class: 114
-      Script: {instanceID: 9692}
+      Script: {instanceID: 9680}
     - Class: 114
       Script: {instanceID: 9694}
     - Class: 114
-      Script: {instanceID: 9702}
+      Script: {instanceID: 9698}
     - Class: 114
-      Script: {instanceID: 9704}
+      Script: {instanceID: 9700}
     - Class: 114
-      Script: {instanceID: 9706}
+      Script: {instanceID: 9708}
     - Class: 114
-      Script: {instanceID: 9732}
+      Script: {instanceID: 9710}
     - Class: 114
-      Script: {instanceID: 10042}
+      Script: {instanceID: 9712}
     - Class: 114
-      Script: {instanceID: 10338}
+      Script: {instanceID: 9720}
     - Class: 114
-      Script: {instanceID: 11064}
+      Script: {instanceID: 10048}
     - Class: 114
-      Script: {instanceID: 11078}
+      Script: {instanceID: 10346}
     - Class: 114
-      Script: {instanceID: 11324}
+      Script: {instanceID: 10548}
     - Class: 114
-      Script: {instanceID: 11734}
+      Script: {instanceID: 11080}
+    - Class: 114
+      Script: {instanceID: 11094}
+    - Class: 114
+      Script: {instanceID: 11340}
     - Class: 114
       Script: {instanceID: 11752}
     - Class: 114
-      Script: {instanceID: 11886}
+      Script: {instanceID: 11770}
+    - Class: 114
+      Script: {instanceID: 11904}
+    - Class: 114
+      Script: {instanceID: 17666}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
       Script: {instanceID: 0}
     - Class: 157
-      Script: {instanceID: 0}
-    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -876,6 +872,12 @@ ScriptsOnlyBuild:
     className: LightweightRenderPipelineAsset
   - hash:
       serializedVersion: 2
+      Hash: b1232e6b794337be92bf1ea6c15071ea
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: UnityEngine.UI.ScrollSnaps
+    className: DirectionalScrollSnap
+  - hash:
+      serializedVersion: 2
       Hash: b3ab2106268377ffe25dd18ac23dca28
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -936,7 +938,7 @@ ScriptsOnlyBuild:
     className: CanvasSampleSaveFileImage
   - hash:
       serializedVersion: 2
-      Hash: b7fa77af100819a0545059431e1bf077
+      Hash: 1e15f2af1a1043e54bb53f09f2542f0b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Note
@@ -964,6 +966,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ChatController
+  - hash:
+      serializedVersion: 2
+      Hash: 38c3e184ec8d35fd0c7b0478b5ac4009
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: UnityEngine.UI.ScrollSnaps
+    className: OmniDirectionalScrollSnap
   - hash:
       serializedVersion: 2
       Hash: 6650a204d51a53926852c34131b2f830
@@ -1098,7 +1106,7 @@ ScriptsOnlyBuild:
     className: SimpleScript
   - hash:
       serializedVersion: 2
-      Hash: e76ca66271aaf3a5fa8594562010ef2d
+      Hash: 7cce09f89a75128c532b82bb10f6524e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TaikoSongPlayer
@@ -1218,7 +1226,7 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
-      Hash: d00a48ae81f6fa3075af5a2657ad49e6
+      Hash: e85704a3a21816ba093aacc794f08c4b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PathHandling
@@ -1306,6 +1314,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 04a751b83eb6e252fcb3eb2cfbfb236d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RawImageScroll
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainMenu.unity

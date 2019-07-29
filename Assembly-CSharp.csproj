@@ -72,6 +72,7 @@
     <Compile Include="Assets\_Scripts\_ParsingSystem\PathHandling.cs" />
     <Compile Include="Assets\_Scripts\_ParsingSystem\TJAParser.cs" />
     <Compile Include="Assets\_Scripts\_UI\LevelTemplate.cs" />
+    <Compile Include="Assets\_Scripts\_UI\RawImageScroll.cs" />
     <Compile Include="Assets\_Scripts\_UI\SongLoader.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\IStandaloneFileBrowser.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\Sample\BasicSample.cs" />
@@ -141,6 +142,7 @@
     <None Include="Assets\Unity UI Scroll Snaps 0.8.2\LICENSE.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\utf8_sequence_0-0x10ffff_assigned_printable.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="Unity.Timeline.Editor">
