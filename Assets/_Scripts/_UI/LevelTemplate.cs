@@ -19,13 +19,18 @@ public class LevelTemplate : MonoBehaviour
     GameObject Center;
     SongLoader SL;
     bool TimeStart = false;
+    public RectTransform child;
 
     // Start is called before the first frame update
     void Start()
     {
         TGI = GameObject.FindObjectOfType<TaikoGameInstance>();
         SL = GameObject.FindObjectOfType<SongLoader>();
-        
+        transform.GetComponentInChildren<Image>().SetNativeSize();
+        child.sizeDelta = new Vector2(transform.GetComponentInChildren<RectTransform>().sizeDelta.x, 680);
+
+
+
     }
 
     // Update is called once per frame

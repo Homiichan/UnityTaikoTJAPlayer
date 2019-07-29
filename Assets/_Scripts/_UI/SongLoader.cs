@@ -26,6 +26,7 @@ public class SongLoader : MonoBehaviour
 
     public string[] itemNames = null;
     public Sprite[] itemImages = null;
+    public float SongSpacing = 50;
 
     AudioSource AS;
     // Start is called before the first frame update
@@ -57,7 +58,7 @@ public class SongLoader : MonoBehaviour
             SpawnedItem.transform.SetParent(SpawnPoint.transform, false);
             //SpawnedItem.transform.position = SpawnPoint.transform.position;
             //get ItemDetails Component
-            GetComponent<DirectionalScrollSnap>().InsertChild(SpawnedItem.GetComponent<RectTransform>(), SpawnedItem.transform.position, 160, 160, true);
+            GetComponent<DirectionalScrollSnap>().InsertChild(SpawnedItem.GetComponent<RectTransform>(), SpawnedItem.transform.position, SongSpacing, SongSpacing, true);
             SpawnedItem.GetComponent<LevelTemplate>().AssignStruc(TGI.TJAFileAvailable[i], i);
             UICreated.Add(SpawnedItem);
         }

@@ -32,10 +32,10 @@ RectTransform:
   m_Father: {fileID: 2268315324640165394}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 94, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3876234227871307234
 CanvasRenderer:
@@ -67,7 +67,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: -2952858817102111556, guid: 96ca233d1b99ff04aa47688dc0ded4a1,
     type: 3}
-  m_Type: 1
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -266,10 +266,10 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 108.3, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6320625458908718217
 MonoBehaviour:
@@ -301,3 +301,4 @@ MonoBehaviour:
   TGI: {fileID: 0}
   CurrentSelectedDif: 3
   SongIndex: 0
+  child: {fileID: 5423958243365179269}

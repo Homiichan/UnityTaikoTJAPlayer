@@ -20,6 +20,7 @@ public class PathHandling : MonoBehaviour
         TJAParser = GameObject.FindObjectOfType<TJAParser>();
         GetDefaultSongPath();
         FileInputField.onValueChanged.AddListener(delegate { OnValueChange(FileInputField.text); });
+        DSS.snappedToItem.AddListener(delegate { ItemSelected(DSS.closestSnapPositionIndex); });
     }
 
     void GetDefaultSongPath()
@@ -55,6 +56,10 @@ public class PathHandling : MonoBehaviour
     public void ItemSelected(int selected)
     {
         Debug.Log(selected);
+        RectTransform temp;
+        DSS.GetChildAtSnapIndex(selected, out temp);
+        Debug.Log(temp.GetComponent<LevelTemplate>().text.text);
+
     }
     public void OnValueChange(string Path)
     {
