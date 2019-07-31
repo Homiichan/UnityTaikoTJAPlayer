@@ -302,3 +302,9 @@ MonoBehaviour:
   CurrentSelectedDif: 3
   SongIndex: 0
   child: {fileID: 5423958243365179269}
+  IsOpened: 0
+  timeToMove: 1
+  LargerBar: {fileID: -3874675691920270039, guid: 7135eeb96eea6f5479990169448d023a,
+    type: 3}
+  TinyBar: {fileID: -2952858817102111556, guid: 96ca233d1b99ff04aa47688dc0ded4a1,
+    type: 3}

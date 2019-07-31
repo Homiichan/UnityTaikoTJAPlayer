@@ -20,6 +20,12 @@ public class LevelTemplate : MonoBehaviour
     SongLoader SL;
     bool TimeStart = false;
     public RectTransform child;
+    float LerpValue = 0;
+    public bool IsOpened = false;
+    public bool DEbug = false;
+    public float timeToMove = 1;
+    public Sprite LargerBar;
+    public Sprite TinyBar;
 
     // Start is called before the first frame update
     void Start()
@@ -28,29 +34,58 @@ public class LevelTemplate : MonoBehaviour
         SL = GameObject.FindObjectOfType<SongLoader>();
         transform.GetComponentInChildren<Image>().SetNativeSize();
         child.sizeDelta = new Vector2(transform.GetComponentInChildren<RectTransform>().sizeDelta.x, 680);
-
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-      
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            if(DEbug)
+                switchUI();
+        }
+        
     }
 
+    void switchUI()
+    {
+        Debug.Log("wouaaaaaaaaaa");
+        if (IsOpened)
+        {
+            //LerpValue += Time.fixedDeltaTime;
+            //child.sizeDelta = new Vector2(Mathf.Lerp(transform.GetComponentInChildren<RectTransform>().sizeDelta.x, 10, LerpValue / timeToMove), transform.GetComponentInChildren<RectTransform>().sizeDelta.y);
+            transform.GetComponentInChildren<Image>().sprite = LargerBar;
+            transform.GetComponentInChildren<Image>().SetNativeSize();
+            child.sizeDelta = new Vector2(300, 680);
+            IsOpened = false;
+
+        }
+        else
+        {
+            transform.GetComponentInChildren<Image>().sprite = TinyBar;
+            transform.GetComponentInChildren<Image>().SetNativeSize();
+            child.sizeDelta = new Vector2(transform.GetComponentInChildren<RectTransform>().sizeDelta.x, 680);
+            IsOpened = true;
+        }
+    }
     public void OnSelected()
     {
+        /*
         Animator tmpAnimator = gameObject.GetComponent<Animator>();
         tmpAnimator.SetFloat("AnimationSpeed", 1);
         tmpAnimator.Play("UIExpansion");
+        */
+        SL.OnSongSwitch(SongInside);
+        Debug.Log(SongInside.TitleName);
     }
 
     public void OnDeselected()
     {
+        /*
         Animator tmpAnimator = gameObject.GetComponent<Animator>();
         tmpAnimator.SetFloat("AnimationSpeed", -1);
         tmpAnimator.Play("UIExpansion");
+        */
     }
     public void AssignStruc(TaikoSongContainer strucToSet, int CurrentSongIndex)
     {

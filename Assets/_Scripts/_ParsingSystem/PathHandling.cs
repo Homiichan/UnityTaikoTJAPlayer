@@ -15,6 +15,8 @@ public class PathHandling : MonoBehaviour
     string TJASongPath = "";
     public DirectionalScrollSnap DSS;
     // Start is called before the first frame update
+    LevelTemplate CurrentSelectedLevel;
+    //SongLoader SL;
     void Start()
     {
         TJAParser = GameObject.FindObjectOfType<TJAParser>();
@@ -59,6 +61,9 @@ public class PathHandling : MonoBehaviour
         RectTransform temp;
         DSS.GetChildAtSnapIndex(selected, out temp);
         Debug.Log(temp.GetComponent<LevelTemplate>().text.text);
+        temp.GetComponent<LevelTemplate>().OnDeselected();
+        CurrentSelectedLevel = temp.GetComponent<LevelTemplate>();
+        CurrentSelectedLevel.OnSelected();
 
     }
     public void OnValueChange(string Path)
