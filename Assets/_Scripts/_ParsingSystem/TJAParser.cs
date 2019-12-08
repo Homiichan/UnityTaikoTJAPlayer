@@ -182,11 +182,17 @@ public class TJAParser : MonoBehaviour
         if(TGI != null)
         {
             TGI.OnTJAFileParsed(TJAFileAvailable);
+            TGI.SaveSongDb();
             TJAFileAvailable.Clear();
         }
         SL.CreateUI();
     }
 
+    public void LoadSongData()
+    {
+        TGI.LoadData();
+        SL.CreateUI();
+    }
 
     void ReadTJAFile(string FilePath)
     {
@@ -528,7 +534,7 @@ public class TJAParser : MonoBehaviour
         }
         else
         {
-            Debug.Log("can't parse " + CurrentSongData.TitleName + "   " + tmpstr);
+            Debug.Log("can't parse " + CurrentSongData.TitleName + "   " + "option = " + paramName + tmpstr);
             return 0;
         }
     }

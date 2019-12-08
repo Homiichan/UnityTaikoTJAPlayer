@@ -7,6 +7,7 @@ TagManager:
   - UICenter
   - AnimStartPoint
   - PlayerLane
+  - coucou
   layers:
   - Default
   - TransparentFX

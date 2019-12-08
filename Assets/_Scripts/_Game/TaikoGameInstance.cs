@@ -79,4 +79,13 @@ public class TaikoGameInstance : MonoBehaviour
 
     }
 
+    public void SaveSongDb()
+    {
+        SongDataSaver.SaveData(this);
+    }
+
+    public void LoadData()
+    {
+        TJAFileAvailable = SongDataSaver.LoadData().tja;
+    }
 }

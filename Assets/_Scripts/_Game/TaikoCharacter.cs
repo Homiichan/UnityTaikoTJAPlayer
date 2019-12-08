@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
+using UnityEngine.UI;
 
 public enum TaikoCharAction
 {
@@ -44,6 +45,7 @@ public class TaikoCharacter : MonoBehaviour
     {
         //frameArray = Resources.LoadAll<Sprite>(GetSpriteNameToLoad(CurrentDonChanAction));
         //PlayAnimation(true, CurrentDonChanAction);
+        PlayAnimation(Loop, CurrentDonChanAction);
     }
 
     // Update is called once per frame
@@ -127,7 +129,7 @@ public class TaikoCharacter : MonoBehaviour
         
         if(CurrentFrame <= frameArray.Length -1)
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = frameArray[CurrentFrame];
+            gameObject.GetComponent<Image>().sprite = frameArray[CurrentFrame];
             CurrentFrame++;
             StartCoroutine(PlayNextFrame(Loop));
         }

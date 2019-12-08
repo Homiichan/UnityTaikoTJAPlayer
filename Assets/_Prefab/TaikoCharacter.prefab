@@ -8,9 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7011117557410112742}
+  - component: {fileID: 7013192283595765294}
   - component: {fileID: 7011117557410112741}
   - component: {fileID: 113767081643507545}
+  - component: {fileID: 5982803519905734528}
+  - component: {fileID: 1996708932972586092}
   m_Layer: 0
   m_Name: TaikoCharacter
   m_TagString: Untagged
@@ -18,20 +20,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7011117557410112742
-Transform:
+--- !u!224 &7013192283595765294
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7011117557410112740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.777, z: -0.957}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.957}
+  m_LocalScale: {x: 150, y: 150, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -14.5, y: -1.777}
+  m_SizeDelta: {x: 1.73, y: 1.37}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7011117557410112741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,21 +52,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frameArray:
-  - {fileID: 2588657354605631257, guid: fa551a369e785a54784f1f11c5d7b8f6, type: 3}
-  - {fileID: -7942965558763218378, guid: fa551a369e785a54784f1f11c5d7b8f6, type: 3}
-  - {fileID: -7629917186736892466, guid: fa551a369e785a54784f1f11c5d7b8f6, type: 3}
-  - {fileID: -3763146976302091724, guid: fa551a369e785a54784f1f11c5d7b8f6, type: 3}
-  - {fileID: 6546731910950183962, guid: fa551a369e785a54784f1f11c5d7b8f6, type: 3}
-  - {fileID: -3475523340031226025, guid: fa551a369e785a54784f1f11c5d7b8f6, type: 3}
-  - {fileID: 2516551658288700650, guid: fa551a369e785a54784f1f11c5d7b8f6, type: 3}
-  - {fileID: -4830056775853431357, guid: fa551a369e785a54784f1f11c5d7b8f6, type: 3}
-  - {fileID: 2157223592593289523, guid: fa551a369e785a54784f1f11c5d7b8f6, type: 3}
-  - {fileID: 3726721424006804445, guid: fa551a369e785a54784f1f11c5d7b8f6, type: 3}
-  - {fileID: 7594898767828663143, guid: fa551a369e785a54784f1f11c5d7b8f6, type: 3}
-  - {fileID: 6998299061872465306, guid: fa551a369e785a54784f1f11c5d7b8f6, type: 3}
-  - {fileID: 2157113015138590862, guid: fa551a369e785a54784f1f11c5d7b8f6, type: 3}
-  - {fileID: -8867770747865761273, guid: fa551a369e785a54784f1f11c5d7b8f6, type: 3}
+  - {fileID: -1366986246018758067, guid: 8f2302bd707fb3e4ca2b1eeb76c74ff2, type: 3}
+  - {fileID: -1142473086089816915, guid: 8f2302bd707fb3e4ca2b1eeb76c74ff2, type: 3}
+  - {fileID: 3069788820395273494, guid: 8f2302bd707fb3e4ca2b1eeb76c74ff2, type: 3}
+  - {fileID: 2831161958511458345, guid: 8f2302bd707fb3e4ca2b1eeb76c74ff2, type: 3}
+  - {fileID: -1749027633946661653, guid: 8f2302bd707fb3e4ca2b1eeb76c74ff2, type: 3}
+  - {fileID: -369039408682576165, guid: 8f2302bd707fb3e4ca2b1eeb76c74ff2, type: 3}
+  - {fileID: -36469896280013365, guid: 8f2302bd707fb3e4ca2b1eeb76c74ff2, type: 3}
+  - {fileID: 8547387692753169762, guid: 8f2302bd707fb3e4ca2b1eeb76c74ff2, type: 3}
+  - {fileID: 4019176296062600957, guid: 8f2302bd707fb3e4ca2b1eeb76c74ff2, type: 3}
+  - {fileID: 1679203603068825108, guid: 8f2302bd707fb3e4ca2b1eeb76c74ff2, type: 3}
+  - {fileID: -2451561319841106584, guid: 8f2302bd707fb3e4ca2b1eeb76c74ff2, type: 3}
+  - {fileID: 853055094146994294, guid: 8f2302bd707fb3e4ca2b1eeb76c74ff2, type: 3}
+  - {fileID: -1720276475614456653, guid: 8f2302bd707fb3e4ca2b1eeb76c74ff2, type: 3}
+  - {fileID: 7142950268270999857, guid: 8f2302bd707fb3e4ca2b1eeb76c74ff2, type: 3}
+  frametate: 0.1
   test: {fileID: 0}
+  spritelist: []
+  spritegetter: 0
+  CurrentDonChanAction: 0
+  LastAction: 0
+  SpriteSheetToLoad: Taiko_GoGoStart
+  BPM: 280
+  Loop: 1
 --- !u!212 &113767081643507545
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -85,6 +100,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -97,15 +113,51 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2588657354605631257, guid: fa551a369e785a54784f1f11c5d7b8f6,
+  m_Sprite: {fileID: 3069788820395273494, guid: 8f2302bd707fb3e4ca2b1eeb76c74ff2,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 2.0068362}
+  m_Size: {x: 1.73, y: 1.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!222 &5982803519905734528
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7011117557410112740}
+  m_CullTransparentMesh: 0
+--- !u!114 &1996708932972586092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7011117557410112740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1

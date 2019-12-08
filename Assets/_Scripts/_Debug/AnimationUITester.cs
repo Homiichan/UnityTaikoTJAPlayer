@@ -18,4 +18,9 @@ public class AnimationUITester : MonoBehaviour
     {
         
     }
+
+    public void EditorScale()
+    {
+
+    }
 }
