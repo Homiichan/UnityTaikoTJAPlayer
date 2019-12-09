@@ -8,16 +8,11 @@ using UnityEngine.UI.Extensions;
 public class ScrollRectSnap : MonoBehaviour
 {
 
-    public RectTransform Panel;
     public List<RectTransform> Song;
-    public RectTransform Center;
     public RectTransform Content;
     public ContentScrollSnapHorizontal SCN;
+    public GameObject CurrentSelectedSong;
 
-    public float[] distance;
-    private bool isDragging = false;
-    private int songDistance;
-    private int minSongName;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,54 +26,65 @@ public class ScrollRectSnap : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {/*
-        for (int i = 0; i < Song.Count - 1; i++)
-        {
-            distance[i] = Mathf.Abs(Center.transform.position.x - Song[i].transform.position.x);
-        }
-
-        float minDistance = Mathf.Min(distance);
-
-        for (int a = 0; a < Song.Count - 1; a++)
-        {
-            if (minDistance == distance[a])
-            {
-                minSongName = a;
-            }
-        }
-
-        if(!isDragging)
-        {
-            LerpToSong(minSongName * -songDistance);
-        }
-        */
+    {
 
         if(Input.GetButtonDown("LeftDon"))
         {
-            SCN.PreviousItem();
+            //SCN.PreviousItem();
+            
+            StartCoroutine(WaitForRetraclOnSwitch("Previous"));
         }
 
         if (Input.GetButtonDown("RightDon"))
         {
-            SCN.NextItem();
+            //SCN.NextItem();
+            StartCoroutine(WaitForRetraclOnSwitch("Next"));
         }
     }
 
-    void LerpToSong(int Position)
+    public void OnSongSelected(int songSelected)
     {
-        float newX = Mathf.Lerp(Panel.anchoredPosition.x, Position, Time.deltaTime * 10);
-        Vector2 NewPosition = new Vector2(newX, Panel.anchoredPosition.y);
+        if(CurrentSelectedSong)
+        {
+            StartCoroutine(WaitForRetract(.5f, CurrentSelectedSong, Song[songSelected].gameObject));
+            Debug.Log("Current Selected" + Song[songSelected].GetComponentInChildren<TextMeshProUGUI>().text);
+        }
+        else
+        {
+            Debug.Log("Current Selected" + Song[songSelected].GetComponentInChildren<TextMeshProUGUI>().text);
+            CurrentSelectedSong = Song[songSelected].gameObject;
+            CurrentSelectedSong.GetComponent<UIScale>().ExpandUI();
+        }
         
-        Panel.anchoredPosition = NewPosition;
     }
 
-    public void onStartDragging()
+    public IEnumerator WaitForRetract(float timeToWait, GameObject OldSong, GameObject newSong)
     {
-        isDragging = true;
+        OldSong.GetComponent<UIScale>().RetracUI();
+        yield return new WaitForSeconds(timeToWait);
+        newSong.GetComponent<UIScale>().ExpandUI();
+        CurrentSelectedSong = newSong;
     }
 
-    public void onStopDragging()
+
+    public IEnumerator WaitForRetraclOnSwitch(string Case)
     {
-        isDragging = false;
+        if(CurrentSelectedSong)
+        {
+            CurrentSelectedSong.GetComponent<UIScale>().RetracUI();
+        }
+        yield return new WaitForSeconds(.5f);
+
+        switch (Case)
+        {
+            case "Next":
+                SCN.NextItem();
+                break;
+            case "Previous":
+                SCN.PreviousItem();
+                break;
+        }
+
     }
+
 }

@@ -136,7 +136,6 @@ public class TaikoCharacter : MonoBehaviour
         else if(Loop)
         {
             CurrentFrame = 0;
-            Debug.Log("loop");
             StartCoroutine(PlayNextFrame(Loop));
         }
         else
