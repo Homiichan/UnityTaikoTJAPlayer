@@ -15,6 +15,8 @@ public class UIScale : MonoBehaviour
     public Sprite SelectedSprite;
     public Sprite NotSelectedSprite;
 
+    public HorizontalLayoutGroup HG;
+
     public Image Songbackground;
     void Start()
     {
@@ -29,6 +31,8 @@ public class UIScale : MonoBehaviour
         }
 
         CS = GameObject.FindObjectOfType<ContentScrollSnapHorizontal>();
+
+        HG = GameObject.FindObjectOfType<HorizontalLayoutGroup>();
     }
 
     // Update is called once per frame
@@ -43,6 +47,8 @@ public class UIScale : MonoBehaviour
         
         Songbackground.sprite = SelectedSprite;
         GetComponent<RectTransform>().sizeDelta = new Vector2(600, GetComponent<RectTransform>().sizeDelta.y);
+        HG.SetLayoutHorizontal();
+        HG.CalculateLayoutInputHorizontal();
         //Layout.GetComponent<HorizontalLayoutGroup>().spacing = 120;
         //StartCoroutine(MoveToPosition(458, 3f));
         //CS.UpdateLayout();
@@ -54,6 +60,8 @@ public class UIScale : MonoBehaviour
         
         Songbackground.sprite = NotSelectedSprite;
         GetComponent<RectTransform>().sizeDelta = new Vector2(180, GetComponent<RectTransform>().sizeDelta.y);
+        HG.SetLayoutHorizontal();
+        HG.CalculateLayoutInputHorizontal();
         //Layout.GetComponent<HorizontalLayoutGroup>().spacing = 30;
         //StartCoroutine(MoveToPosition(170, 3));
         //CS.UpdateLayout();
