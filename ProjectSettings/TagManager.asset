@@ -8,6 +8,7 @@ TagManager:
   - AnimStartPoint
   - PlayerLane
   - coucou
+  - SongBackground
   layers:
   - Default
   - TransparentFX

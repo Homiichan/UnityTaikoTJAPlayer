@@ -46,7 +46,7 @@ public class ScrollRectSnap : MonoBehaviour
     {
         if(CurrentSelectedSong)
         {
-            StartCoroutine(WaitForRetract(.5f, CurrentSelectedSong, Song[songSelected].gameObject));
+            StartCoroutine(WaitForRetract(.05f, CurrentSelectedSong, Song[songSelected].gameObject));
             Debug.Log("Current Selected" + Song[songSelected].GetComponentInChildren<TextMeshProUGUI>().text);
         }
         else
