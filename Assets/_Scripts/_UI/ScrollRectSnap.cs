@@ -19,7 +19,7 @@ public class ScrollRectSnap : MonoBehaviour
         for(int  i = 0; i <= Content.childCount - 1 ; i++ )
         {
             Song.Add(Content.GetChild(i).GetComponent<RectTransform>());
-            Content.GetChild(i).Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = "Song No " + i;
+            //Content.GetChild(i).Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = "Song No " + i;
         }
         SCN.PreviousItem();
 

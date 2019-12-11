@@ -49,10 +49,6 @@ public class UIScale : MonoBehaviour
         GetComponent<RectTransform>().sizeDelta = new Vector2(600, GetComponent<RectTransform>().sizeDelta.y);
         HG.SetLayoutHorizontal();
         HG.CalculateLayoutInputHorizontal();
-        //Layout.GetComponent<HorizontalLayoutGroup>().spacing = 120;
-        //StartCoroutine(MoveToPosition(458, 3f));
-        //CS.UpdateLayout();
-        //LayoutRebuilder.ForceRebuildLayoutImmediate(Layout.GetComponent<RectTransform>());
     }
 
     public void RetracUI()
@@ -62,30 +58,10 @@ public class UIScale : MonoBehaviour
         GetComponent<RectTransform>().sizeDelta = new Vector2(180, GetComponent<RectTransform>().sizeDelta.y);
         HG.SetLayoutHorizontal();
         HG.CalculateLayoutInputHorizontal();
-        //Layout.GetComponent<HorizontalLayoutGroup>().spacing = 30;
-        //StartCoroutine(MoveToPosition(170, 3));
-        //CS.UpdateLayout();
-        //LayoutRebuilder.ForceRebuildLayoutImmediate(Layout.GetComponent<RectTransform>());
     }
 
     public IEnumerator MoveToPosition(float NewWidth, float timeToMove)
     {
-        /*
-        var currentWidth = GetComponent<RectTransform>().sizeDelta.x;
-        var t = 0f;
-        while (t < 1)
-        {
-            
-            t += Time.deltaTime / timeToMove;
-            float NewScale = Mathf.Lerp(GetComponent<RectTransform>().sizeDelta.x, NewWidth, t);
-            GetComponent<RectTransform>().sizeDelta = new Vector2(NewScale, GetComponent<RectTransform>().sizeDelta.y);
-            LayoutRebuilder.ForceRebuildLayoutImmediate(Layout.GetComponent<RectTransform>());
-            
-            CS.UpdateLayout();
-            yield return null;
-        }
-    */
-
         yield return new WaitForSeconds(timeToMove);
         CS.UpdateLayout();
     }
@@ -93,6 +69,13 @@ public class UIScale : MonoBehaviour
     public void OnEditorClick()
     {
         StartScale = true;
+    }
+
+    public IEnumerator WaitBegin()
+    {
+        yield return new WaitForSeconds(1);
+        HG.SetLayoutHorizontal();
+        HG.CalculateLayoutInputHorizontal();
     }
 
 }

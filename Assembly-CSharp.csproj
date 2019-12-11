@@ -68,6 +68,7 @@
     <Compile Include="Assets\_Scripts\_DataBase\TestSave.cs" />
     <Compile Include="Assets\_Scripts\_Debug\AnimationTesterEditor.cs" />
     <Compile Include="Assets\_Scripts\_Debug\AnimationUITester.cs" />
+    <Compile Include="Assets\_Scripts\_Debug\DebugTest.cs" />
     <Compile Include="Assets\_Scripts\_Debug\UIScaleEditor.cs" />
     <Compile Include="Assets\_Scripts\_Game\DrumHandler.cs" />
     <Compile Include="Assets\_Scripts\_Game\Note.cs" />
