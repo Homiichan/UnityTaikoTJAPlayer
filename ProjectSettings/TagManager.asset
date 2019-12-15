@@ -9,6 +9,8 @@ TagManager:
   - PlayerLane
   - coucou
   - SongBackground
+  - FadeLevelComp
+  - SongAudioSource
   layers:
   - Default
   - TransparentFX

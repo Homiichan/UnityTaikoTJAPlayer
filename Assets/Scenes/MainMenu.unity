@@ -527,66 +527,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2121587929
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2121587931}
-  - component: {fileID: 2121587930}
-  m_Layer: 0
-  m_Name: TaikoGameInstance
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2121587930
+--- !u!114 &2121587930 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 7423285574057972264, guid: afc7d7e26b8209e41bca65f90956fd12,
+    type: 3}
+  m_PrefabInstance: {fileID: 7423285574166187762}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2121587929}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edaed071c03f9c846ad25b5fbb486632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TJAFileAvailable: []
-  CurrentSelectedSong:
-    TitleName: 
-    AllSongDifficulty: []
-    AllSongData: []
-    BPM: 0
-    SoundWavePath: 
-    Offset: 0
-    SongVolume: 0
-    SEVOL: 0
-    DEMOSTART: 0
-    SCOREMODE: 0
-    Genre: 
-    SongPath: 
-    OggPath: 
-  SongDiffIndex: 0
-  CurrentNoteState: 0
---- !u!4 &2121587931
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2121587929}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2127878346
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,3 +883,72 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 841716543412411352}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7423285574166187762
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7423285574057972265, guid: afc7d7e26b8209e41bca65f90956fd12,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423285574057972265, guid: afc7d7e26b8209e41bca65f90956fd12,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423285574057972265, guid: afc7d7e26b8209e41bca65f90956fd12,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423285574057972265, guid: afc7d7e26b8209e41bca65f90956fd12,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423285574057972265, guid: afc7d7e26b8209e41bca65f90956fd12,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423285574057972265, guid: afc7d7e26b8209e41bca65f90956fd12,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423285574057972265, guid: afc7d7e26b8209e41bca65f90956fd12,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423285574057972265, guid: afc7d7e26b8209e41bca65f90956fd12,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423285574057972265, guid: afc7d7e26b8209e41bca65f90956fd12,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423285574057972265, guid: afc7d7e26b8209e41bca65f90956fd12,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423285574057972265, guid: afc7d7e26b8209e41bca65f90956fd12,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423285574057972267, guid: afc7d7e26b8209e41bca65f90956fd12,
+        type: 3}
+      propertyPath: m_Name
+      value: TaikoGameInstance
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: afc7d7e26b8209e41bca65f90956fd12, type: 3}

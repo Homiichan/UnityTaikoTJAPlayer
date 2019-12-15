@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 #if (UNITY_EDITOR) 
-[CustomEditor(typeof(UIScale))]
+[CustomEditor(typeof(songUI))]
 
 public class UIScaleEditor : Editor
 {
@@ -13,7 +13,7 @@ public class UIScaleEditor : Editor
     {
         DrawDefaultInspector();
 
-        UIScale myScript = (UIScale)target;
+        songUI myScript = (songUI)target;
         if (GUILayout.Button("ScaleUp"))
         {
             myScript.OnEditorClick();

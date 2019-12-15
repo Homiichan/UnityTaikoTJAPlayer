@@ -70,6 +70,7 @@
     <Compile Include="Assets\_Scripts\_Debug\AnimationUITester.cs" />
     <Compile Include="Assets\_Scripts\_Debug\DebugTest.cs" />
     <Compile Include="Assets\_Scripts\_Debug\UIScaleEditor.cs" />
+    <Compile Include="Assets\_Scripts\_ExtensionMethod\TaikoStaticExtension.cs" />
     <Compile Include="Assets\_Scripts\_Game\DrumHandler.cs" />
     <Compile Include="Assets\_Scripts\_Game\Note.cs" />
     <Compile Include="Assets\_Scripts\_Game\TaikoCharacter.cs" />
@@ -78,9 +79,13 @@
     <Compile Include="Assets\_Scripts\_ParsingSystem\PathHandling.cs" />
     <Compile Include="Assets\_Scripts\_ParsingSystem\TJAParser.cs" />
     <Compile Include="Assets\_Scripts\_UI\LevelTemplate.cs" />
+    <Compile Include="Assets\_Scripts\_UI\LoadingScreenHandler.cs" />
     <Compile Include="Assets\_Scripts\_UI\RawImageScroll.cs" />
     <Compile Include="Assets\_Scripts\_UI\ScrollRectSnap.cs" />
+    <Compile Include="Assets\_Scripts\_UI\songDifficulty.cs" />
+    <Compile Include="Assets\_Scripts\_UI\SongDiffSelectorScreenController.cs" />
     <Compile Include="Assets\_Scripts\_UI\SongLoader.cs" />
+    <Compile Include="Assets\songUI.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\IStandaloneFileBrowser.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\Sample\BasicSample.cs" />
     <Compile Include="Assets\StandaloneFileBrowser\Sample\CanvasSampleOpenFileImage.cs" />
@@ -126,7 +131,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
-    <Compile Include="Assets\UIScale.cs" />
     <Compile Include="Assets\Unity UI Scroll Snaps 0.8.2\Scripts\Componets\DirectionalScrollSnap.cs" />
     <Compile Include="Assets\Unity UI Scroll Snaps 0.8.2\Scripts\Componets\OmniDirectionalScrollSnap.cs" />
     <Compile Include="Assets\Unity UI Scroll Snaps 0.8.2\Scripts\HelperClasses\Scroller.cs" />

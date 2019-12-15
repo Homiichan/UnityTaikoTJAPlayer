@@ -12,6 +12,7 @@ public class ScrollRectSnap : MonoBehaviour
     public RectTransform Content;
     public ContentScrollSnapHorizontal SCN;
     public GameObject CurrentSelectedSong;
+    public int CurrentSelectedSongIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -29,42 +30,61 @@ public class ScrollRectSnap : MonoBehaviour
     void Update()
     {
 
-        if(Input.GetButtonDown("LeftDon"))
+        if(Input.GetButtonDown("LeftKa"))
         {
             //SCN.PreviousItem();
-            
-            StartCoroutine(WaitForRetraclOnSwitch("Previous"));
+            if(CurrentSelectedSongIndex > 0)
+            {
+                StartCoroutine(WaitForRetraclOnSwitch("Previous"));
+            }
         }
 
-        if (Input.GetButtonDown("RightDon"))
+        if (Input.GetButtonDown("RightKa"))
         {
-            //SCN.NextItem();
-            StartCoroutine(WaitForRetraclOnSwitch("Next"));
+            if(CurrentSelectedSongIndex < Song.Count - 1)
+            {
+                StartCoroutine(WaitForRetraclOnSwitch("Next"));
+            }
+            
+        }
+
+        if(Input.GetButtonDown("RightDon"))
+        {
+            Debug.Log("select");
+            CurrentSelectedSong.GetComponent<songUI>().OnSongSelected();
+        }
+
+        if (Input.GetButtonDown("LeftDon"))
+        {
+            Debug.Log("cancel");
         }
     }
 
     public void OnSongSelected(int songSelected)
     {
+        
         if(CurrentSelectedSong)
         {
-            StartCoroutine(WaitForRetract(.05f, CurrentSelectedSong, Song[songSelected].gameObject));
-            Debug.Log("Current Selected" + Song[songSelected].GetComponentInChildren<TextMeshProUGUI>().text);
+            StartCoroutine(WaitForRetract(.03f, CurrentSelectedSong, Song[songSelected].gameObject, songSelected));
+            Debug.Log("Current Selected poppie" + Song[songSelected].GetComponentInChildren<TextMeshProUGUI>().text + "index is = " + songSelected.ToString());
         }
         else
         {
             Debug.Log("Current Selected" + Song[songSelected].GetComponentInChildren<TextMeshProUGUI>().text);
             CurrentSelectedSong = Song[songSelected].gameObject;
-            CurrentSelectedSong.GetComponent<UIScale>().ExpandUI();
+            CurrentSelectedSong.GetComponent<songUI>().ExpandUI();
+            CurrentSelectedSongIndex = songSelected;
         }
         
     }
 
-    public IEnumerator WaitForRetract(float timeToWait, GameObject OldSong, GameObject newSong)
+    public IEnumerator WaitForRetract(float timeToWait, GameObject OldSong, GameObject newSong, int songIndex)
     {
-        OldSong.GetComponent<UIScale>().RetracUI();
+        OldSong.GetComponent<songUI>().RetracUI();
         yield return new WaitForSeconds(timeToWait);
-        newSong.GetComponent<UIScale>().ExpandUI();
+        newSong.GetComponent<songUI>().ExpandUI();
         CurrentSelectedSong = newSong;
+        CurrentSelectedSongIndex = songIndex;
     }
 
 
@@ -72,9 +92,9 @@ public class ScrollRectSnap : MonoBehaviour
     {
         if(CurrentSelectedSong)
         {
-            CurrentSelectedSong.GetComponent<UIScale>().RetracUI();
+            CurrentSelectedSong.GetComponent<songUI>().RetracUI();
         }
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.3f);
 
         switch (Case)
         {
