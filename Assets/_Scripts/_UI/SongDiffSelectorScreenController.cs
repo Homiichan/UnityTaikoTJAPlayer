@@ -29,6 +29,9 @@ public class SongDiffSelectorScreenController : MonoBehaviour
     [Header("SongInfo")]
     public TextMeshProUGUI SongName;
 
+    [Header("SongSelect GameObject")]
+    public ScrollRectSnap SongSelect;
+
     private AudioSource MainAudioPlayer;
     private bool KantanDifFound = false;
     private bool FutsuDifFound = false;
@@ -39,16 +42,31 @@ public class SongDiffSelectorScreenController : MonoBehaviour
 
     private bool SelectorIsMoving = false;
 
+    public List<GameObject> CompToFade; 
+
     // Start is called before the first frame update
     void Start()
     {
         MainAudioPlayer = TaikoStaticExtension.GetMainSongPlayer();
         TGI = GameObject.FindObjectOfType<TaikoGameInstance>();
         SetupSong();
+        GetAllCompToFade();
+        StartCoroutine(LerpAlphaFloat(1, 0, 0));
     }
 
 
-    void SetupSong()
+
+    void GetAllCompToFade()
+    {
+        for(int i = 0; i <= transform.childCount - 1; i++)
+        {
+            if(transform.GetChild(i).tag != "FadeIgnoreFlag")
+            {
+                CompToFade.Add(transform.GetChild(i).gameObject);
+            }
+        }
+    }
+    public void SetupSong()
     {
         KantanDifFound = false;
         FutsuDifFound = false;
@@ -83,6 +101,20 @@ public class SongDiffSelectorScreenController : MonoBehaviour
         StartCoroutine(TaikoStaticExtension.LoadAndPlaySong(MainAudioPlayer, CurrentSong));
     }
 
+    private void OnEnable()
+    {
+        SetupSong();
+    }
+    public void StartFadeIn(float timeToFade)
+    {
+        StartCoroutine(LerpAlphaFloat(0, 1, timeToFade));
+    }
+
+    public void StartFadeOut(float timeToFade)
+    {
+        StartCoroutine(LerpAlphaFloat(1, 0, timeToFade));
+    }
+
     void CheckForAvailableDif()
     {
         if(!KantanDifFound)
@@ -112,7 +144,12 @@ public class SongDiffSelectorScreenController : MonoBehaviour
         
     }
 
-
+    public void OnBackToSongSelect()
+    {
+        SongSelect.SwitchToFullScreenMode(false);
+        //SongSelect.gameObject.SetActive(true);
+        //this.gameObject.SetActive(false);
+    }
     public void OnDiffSelected(Button SelectedButton)
     {
         if(!SelectorIsMoving)
@@ -137,6 +174,35 @@ public class SongDiffSelectorScreenController : MonoBehaviour
         SelectorIsMoving = false;
     }
 
+    public IEnumerator LerpAlphaFloat(float Origin, float targetAlpha, float timeToMove)
+    {
+        var currentPos = Origin;
+        var t = 0f;
+        while (t < 1)
+        {
+            t += Time.deltaTime / timeToMove;
+            SelectorIsMoving = true;
+            float tmpLerpedFloat = Mathf.Lerp(Origin, targetAlpha, t);
+            SetFadeValueToComp(tmpLerpedFloat);
+            yield return null;
+        }
+        SelectorIsMoving = false;
+    }
+
+    void SetFadeValueToComp(float AlphaValue)
+    {
+        foreach(GameObject go in CompToFade)
+        {
+            if(go.GetComponent<Image>())
+            {
+                go.GetComponent<Image>().color = new Color(go.GetComponent<Image>().color.r, go.GetComponent<Image>().color.g, go.GetComponent<Image>().color.b, AlphaValue);
+            }
+            else if(go.GetComponent<TextMeshProUGUI>())
+            {
+                go.GetComponent<TextMeshProUGUI>().color = new Color(go.GetComponent<TextMeshProUGUI>().color.r, go.GetComponent<TextMeshProUGUI>().color.g, go.GetComponent<TextMeshProUGUI>().color.b, AlphaValue);
+            }
+        }
+    }
     public void OnSubmitDiff(int SelectedDif)
     {
         TaikoStaticExtension.SetFadeState(true);

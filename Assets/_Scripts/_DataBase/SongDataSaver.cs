@@ -42,4 +42,36 @@ public class SongDataSaver
         }
     }
 
+    public static bool DoesFilesExist()
+    {
+        string path = Application.persistentDataPath + "/Song.taiko";
+        return File.Exists(path);
+    }
+
+    public static string GetDefaultTJAPath()
+    {
+        string tmpPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+        tmpPath = tmpPath + "\\TaikoSim\\";
+        if (!Directory.Exists(tmpPath))
+        {
+            //if it doesn't, create it
+
+            Directory.CreateDirectory(tmpPath);
+            if (!Directory.Exists(tmpPath + @"\Songs\"))
+            {
+                Directory.CreateDirectory(tmpPath + @"\Songs\");
+                return tmpPath;
+            }
+            else
+            {
+                return tmpPath;
+            }
+
+        }
+        else
+        {
+            return tmpPath;
+        }
+    }
+
 }

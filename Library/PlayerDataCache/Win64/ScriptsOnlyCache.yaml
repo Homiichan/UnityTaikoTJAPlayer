@@ -3,18 +3,21 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - DrumHandler
     - LevelTemplate
+    - LoadingScreenHandler
     - Note
     - PathHandling
     - RawImageScroll
     - ScrollRectSnap
+    - SongDiffSelectorScreenController
     - SongLoader
     - TJAParser
     - TaikoCharacter
     - TaikoGameInstance
     - TaikoSongPlayer
-    - UIScale
     - UnityEngine.UI.Extensions.ContentScrollSnapHorizontal
     - UnityEngine.UI.ScrollSnaps.DirectionalScrollSnap
+    - songDifficulty
+    - songUI
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
@@ -32,8 +35,17 @@ ScriptsOnlyBuild:
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
+    - TMPro.TMP_SubMeshUI
     - TMPro.TextMeshPro
     - TMPro.TextMeshProUGUI
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -43,9 +55,11 @@ ScriptsOnlyBuild:
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.ContentSizeFitter
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
+    - UnityEngine.UI.LayoutElement
     - UnityEngine.UI.RawImage
     - UnityEngine.UI.RectMask2D
     - UnityEngine.UI.ScrollRect
@@ -96,19 +110,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11196}
     - Class: 114
-      Script: {instanceID: 11940}
+      Script: {instanceID: 11942}
     - Class: 114
-      Script: {instanceID: 12348}
+      Script: {instanceID: 12350}
     - Class: 114
-      Script: {instanceID: 12482}
+      Script: {instanceID: 12484}
     - Class: 114
-      Script: {instanceID: 12718}
+      Script: {instanceID: 12720}
     - Class: 114
-      Script: {instanceID: 13016}
+      Script: {instanceID: 13018}
     - Class: 114
-      Script: {instanceID: 13580}
+      Script: {instanceID: 13586}
     - Class: 114
-      Script: {instanceID: 13792}
+      Script: {instanceID: 13800}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -171,21 +185,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11572}
     - Class: 114
-      Script: {instanceID: 12078}
+      Script: {instanceID: 12080}
     - Class: 114
-      Script: {instanceID: 12108}
+      Script: {instanceID: 12110}
     - Class: 114
-      Script: {instanceID: 12240}
+      Script: {instanceID: 12242}
     - Class: 114
-      Script: {instanceID: 12482}
+      Script: {instanceID: 12484}
     - Class: 114
-      Script: {instanceID: 12888}
+      Script: {instanceID: 12890}
     - Class: 114
-      Script: {instanceID: 13016}
+      Script: {instanceID: 13018}
     - Class: 114
-      Script: {instanceID: 13396}
+      Script: {instanceID: 13402}
     - Class: 114
-      Script: {instanceID: 13792}
+      Script: {instanceID: 13800}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -225,7 +239,15 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 64
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -233,14 +255,28 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 109
       Script: {instanceID: 0}
+    - Class: 111
+      Script: {instanceID: 0}
     - Class: 114
       Script: {instanceID: 9918}
     - Class: 114
       Script: {instanceID: 10082}
     - Class: 114
+      Script: {instanceID: 10220}
+    - Class: 114
+      Script: {instanceID: 10254}
+    - Class: 114
+      Script: {instanceID: 10274}
+    - Class: 114
       Script: {instanceID: 10362}
     - Class: 114
+      Script: {instanceID: 10562}
+    - Class: 114
+      Script: {instanceID: 10592}
+    - Class: 114
       Script: {instanceID: 10676}
+    - Class: 114
+      Script: {instanceID: 10802}
     - Class: 114
       Script: {instanceID: 11196}
     - Class: 114
@@ -252,27 +288,35 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11628}
     - Class: 114
-      Script: {instanceID: 12108}
+      Script: {instanceID: 12080}
     - Class: 114
-      Script: {instanceID: 12474}
+      Script: {instanceID: 12110}
     - Class: 114
-      Script: {instanceID: 12482}
+      Script: {instanceID: 12476}
     - Class: 114
-      Script: {instanceID: 12508}
+      Script: {instanceID: 12484}
     - Class: 114
-      Script: {instanceID: 12786}
+      Script: {instanceID: 12510}
     - Class: 114
-      Script: {instanceID: 12888}
+      Script: {instanceID: 12788}
     - Class: 114
-      Script: {instanceID: 13016}
+      Script: {instanceID: 12890}
     - Class: 114
-      Script: {instanceID: 13374}
+      Script: {instanceID: 13018}
     - Class: 114
-      Script: {instanceID: 13592}
+      Script: {instanceID: 13320}
+    - Class: 114
+      Script: {instanceID: 13380}
+    - Class: 114
+      Script: {instanceID: 13598}
     - Class: 114
       Script: {instanceID: 13720}
     - Class: 114
-      Script: {instanceID: 13792}
+      Script: {instanceID: 13728}
+    - Class: 114
+      Script: {instanceID: 13800}
+    - Class: 114
+      Script: {instanceID: 13868}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -422,7 +466,7 @@ ScriptsOnlyBuild:
     className: GroupTrack
   - hash:
       serializedVersion: 2
-      Hash: b81f03f1bcbd056956c697f6eb368606
+      Hash: 7be99c893c6e06d81f444dd58e3619fd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TaikoGameInstance
@@ -668,10 +712,10 @@ ScriptsOnlyBuild:
     className: testHref
   - hash:
       serializedVersion: 2
-      Hash: 794060239ae54b4ca26aedf54b2e9c47
+      Hash: 1ecc7d8b6795dfedc3c9f1d6e6990da4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: UIScale
+    className: songUI
   - hash:
       serializedVersion: 2
       Hash: 03eab2d5d629c7fe3da866c864450f1a
@@ -1676,7 +1720,7 @@ ScriptsOnlyBuild:
     className: TMP_FrameRateCounter
   - hash:
       serializedVersion: 2
-      Hash: cdd3e0125e96724086e9b6ff5028e51f
+      Hash: 23d4e479660b700049fbc97b342f68cb
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ScrollRectSnap
@@ -1820,6 +1864,12 @@ ScriptsOnlyBuild:
     className: Benchmark02
   - hash:
       serializedVersion: 2
+      Hash: f3db27dd98046e4a23514d9a671e22e0
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DebugTest
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: UnityEngine.UI.Extensions
@@ -1890,6 +1940,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: MarkerTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 802afbe996cc57ced8549e4c5a5f60b8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LoadingScreenHandler
   - hash:
       serializedVersion: 2
       Hash: 2802d846ea964d192455493eb4784a48
@@ -2054,6 +2110,12 @@ ScriptsOnlyBuild:
     className: RadialSlider
   - hash:
       serializedVersion: 2
+      Hash: 7aa8bc5fe27d8bbb889093082fa8cdc6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SongDiffSelectorScreenController
+  - hash:
+      serializedVersion: 2
       Hash: a63fc1a3b035e5a0b5839cd7f7b3086e
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
@@ -2138,6 +2200,12 @@ ScriptsOnlyBuild:
     className: Slider
   - hash:
       serializedVersion: 2
+      Hash: f29de98bf148bd17579a909d884f3b10
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: songDifficulty
+  - hash:
+      serializedVersion: 2
       Hash: b474d6331783864a4f4f41cd2727638d
     assemblyName: Assembly-CSharp.dll
     namespaceName: UnityEngine.UI.Extensions
@@ -2172,12 +2240,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: f3db27dd98046e4a23514d9a671e22e0
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: DebugTest
   platform: 19
   scenePathNames:
   - Assets/Scenes/TestSaveData.unity

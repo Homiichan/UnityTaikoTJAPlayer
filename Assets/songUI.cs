@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UI.Extensions;
+using TMPro;
 
 public class songUI : MonoBehaviour
 {
     // Start is called before the first frame update//
     bool StartScale = false;
-    GameObject Layout;
 
     public ContentScrollSnapHorizontal CS;
 
@@ -21,14 +21,18 @@ public class songUI : MonoBehaviour
     public TaikoSongContainer currentSong;
 
     public GameObject DifficultyCanvas;
+    ScrollRectSnap ScrollSnap;
     Animator m_Animator;
 
     public List<Image> FadeComp;
+
+    public songDifficulty[] SongDiffCanvas;
+
+    public TextMeshProUGUI SongName;
     void Start()
     {
-        Layout = GameObject.FindGameObjectWithTag("coucou");
         FadeComp = new List<Image>();
-
+        ScrollSnap = GameObject.FindObjectOfType<ScrollRectSnap>();
         for (int i = 0; i <= (gameObject.transform.childCount - 1); i++)
         {
             if(gameObject.transform.GetChild(i).tag == "SongBackground")
@@ -59,6 +63,24 @@ public class songUI : MonoBehaviour
         
     }
 
+    public void ConstructUI (TaikoSongContainer targetSong)
+    {
+        currentSong = targetSong;
+
+        foreach(TaikoSongStruc tmpSongDiff in currentSong.AllSongDifficulty)
+        {
+            foreach(songDifficulty tmpSongDiffCanvas in SongDiffCanvas)
+            {
+                if(tmpSongDiff.Difficulty == tmpSongDiffCanvas.diffContained.Difficulty)
+                {
+                    tmpSongDiffCanvas.diffContained = tmpSongDiff;
+                }
+            }
+        }
+
+        SongName.text = currentSong.TitleName;
+    }
+
 
     public void ExpandUI()
     {
@@ -82,6 +104,15 @@ public class songUI : MonoBehaviour
         DifficultyCanvas.SetActive(false);
     }
 
+    public void OnSongDeselected()
+    {
+        
+        m_Animator.SetBool("Selected", false);
+        m_Animator.SetBool("Expand", true); ;
+        //m_Animator.Play("TestState");
+        //DifficultyCanvas.SetActive(fa);
+    }
+
 
     public void OnAnimFinished(string animPlayed)
     {
@@ -103,6 +134,11 @@ public class songUI : MonoBehaviour
         DifficultyCanvas.SetActive(true);
         StartCoroutine(LerpAlpha(0, 1, .10f));
         
+    }
+
+    public void SwitchToFullScreenUI(int FullScreenState)
+    {
+        ScrollSnap.SwitchToFullScreenMode(FullScreenState != 0);
     }
 
 

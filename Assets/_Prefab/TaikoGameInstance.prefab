@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7423285574057972265}
   - component: {fileID: 7423285574057972264}
+  - component: {fileID: 3779670541629829307}
   m_Layer: 0
   m_Name: TaikoGameInstance
   m_TagString: Untagged
@@ -60,3 +61,31 @@ MonoBehaviour:
     OggPath: 
   SongDiffIndex: 0
   CurrentNoteState: 0
+--- !u!114 &3779670541629829307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7423285574057972267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1818291ae746da4398d30a2b91df7c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  folderPath: 
+  TJAFileAvailable: []
+  CurrentSongData:
+    TitleName: 
+    AllSongDifficulty: []
+    AllSongData: []
+    BPM: 0
+    SoundWavePath: 
+    Offset: 0
+    SongVolume: 0
+    SEVOL: 0
+    DEMOSTART: 0
+    SCOREMODE: 0
+    Genre: 
+    SongPath: 
+    OggPath: 

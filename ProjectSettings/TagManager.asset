@@ -11,6 +11,7 @@ TagManager:
   - SongBackground
   - FadeLevelComp
   - SongAudioSource
+  - FadeIgnoreFlag
   layers:
   - Default
   - TransparentFX

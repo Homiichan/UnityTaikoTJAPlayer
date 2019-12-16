@@ -14,16 +14,34 @@ public class ScrollRectSnap : MonoBehaviour
     public GameObject CurrentSelectedSong;
     public int CurrentSelectedSongIndex;
 
+    public SongDiffSelectorScreenController SongDiffScreen;
+
+    TaikoGameInstance TGI;
+
+    public GameObject SongUITemplate;
     // Start is called before the first frame update
     void Start()
     {
-        for(int  i = 0; i <= Content.childCount - 1 ; i++ )
+        TGI = GameObject.FindObjectOfType<TaikoGameInstance>();
+    }
+
+    public void ConstructUI()
+    {
+        
+        foreach(TaikoSongContainer tmpSongContainer in TGI.TJAFileAvailable)
+        {
+            GameObject SpawnedItem = Instantiate(SongUITemplate, Content);
+            SpawnedItem.GetComponent<songUI>().ConstructUI(tmpSongContainer);
+            //Debug.Log("Spawn");
+        }
+        
+        for (int i = 0; i <= Content.childCount - 1; i++)
         {
             Song.Add(Content.GetChild(i).GetComponent<RectTransform>());
-            //Content.GetChild(i).Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = "Song No " + i;
         }
-        SCN.PreviousItem();
-
+        ContentScrollSnapHorizontal.MoveInfo info = new ContentScrollSnapHorizontal.MoveInfo(ContentScrollSnapHorizontal.MoveInfo.IndexType.positionIndex, 0);
+        SCN.UpdateLayoutAndMoveTo(info);
+        
     }
 
     // Update is called once per frame
@@ -50,8 +68,10 @@ public class ScrollRectSnap : MonoBehaviour
 
         if(Input.GetButtonDown("RightDon"))
         {
-            Debug.Log("select");
+            Debug.Log("select" + CurrentSelectedSong.GetComponent<songUI>().currentSong.TitleName); ;
             CurrentSelectedSong.GetComponent<songUI>().OnSongSelected();
+            SongDiffScreen.CurrentSong = CurrentSelectedSong.GetComponent<songUI>().currentSong;
+            
         }
 
         if (Input.GetButtonDown("LeftDon"))
@@ -66,11 +86,11 @@ public class ScrollRectSnap : MonoBehaviour
         if(CurrentSelectedSong)
         {
             StartCoroutine(WaitForRetract(.03f, CurrentSelectedSong, Song[songSelected].gameObject, songSelected));
-            Debug.Log("Current Selected poppie" + Song[songSelected].GetComponentInChildren<TextMeshProUGUI>().text + "index is = " + songSelected.ToString());
+            //Debug.Log("Current Selected poppie" + Song[songSelected].GetComponentInChildren<TextMeshProUGUI>().text + "index is = " + songSelected.ToString());
         }
         else
         {
-            Debug.Log("Current Selected" + Song[songSelected].GetComponentInChildren<TextMeshProUGUI>().text);
+            //Debug.Log("Current Selected" + Song[songSelected].GetComponentInChildren<TextMeshProUGUI>().text);
             CurrentSelectedSong = Song[songSelected].gameObject;
             CurrentSelectedSong.GetComponent<songUI>().ExpandUI();
             CurrentSelectedSongIndex = songSelected;
@@ -78,6 +98,22 @@ public class ScrollRectSnap : MonoBehaviour
         
     }
 
+    public void SwitchToFullScreenMode(bool FullScreenState)
+    {
+        if(FullScreenState)
+        {
+            
+            SongDiffScreen.gameObject.SetActive(true);
+            SongDiffScreen.StartFadeIn(.3f);
+            this.gameObject.SetActive(false);
+        }
+        else
+        {
+            SongDiffScreen.gameObject.SetActive(false);
+            this.gameObject.SetActive(true);
+            CurrentSelectedSong.GetComponent<songUI>().OnSongDeselected();
+        }
+    }
     public IEnumerator WaitForRetract(float timeToWait, GameObject OldSong, GameObject newSong, int songIndex)
     {
         OldSong.GetComponent<songUI>().RetracUI();
