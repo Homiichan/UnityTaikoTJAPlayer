@@ -94,6 +94,7 @@ public class ScrollRectSnap : MonoBehaviour
             CurrentSelectedSong = Song[songSelected].gameObject;
             CurrentSelectedSong.GetComponent<songUI>().ExpandUI();
             CurrentSelectedSongIndex = songSelected;
+            TGI.SetSelectedSong(songSelected - 1);
         }
         
     }
@@ -121,6 +122,7 @@ public class ScrollRectSnap : MonoBehaviour
         newSong.GetComponent<songUI>().ExpandUI();
         CurrentSelectedSong = newSong;
         CurrentSelectedSongIndex = songIndex;
+        TGI.SetSelectedSong(CurrentSelectedSongIndex - 1);
     }
 
 

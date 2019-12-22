@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_Scripts\_AudioPlayer\SongPlayerController.cs" />
     <Compile Include="Assets\_Scripts\_DataBase\SongData.cs" />
     <Compile Include="Assets\_Scripts\_DataBase\SongDataSaver.cs" />
     <Compile Include="Assets\_Scripts\_DataBase\TestSave.cs" />

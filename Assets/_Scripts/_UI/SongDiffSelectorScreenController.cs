@@ -205,7 +205,9 @@ public class SongDiffSelectorScreenController : MonoBehaviour
     }
     public void OnSubmitDiff(int SelectedDif)
     {
+        TGI.FindSongAndDifficulty(0, TaikoStaticExtension.GetTaikoDiffByInt(SelectedDif));
         TaikoStaticExtension.SetFadeState(true);
+        Debug.Log("selected dif = " + TaikoStaticExtension.GetTaikoDiffByInt(SelectedDif));
     }
 
 }

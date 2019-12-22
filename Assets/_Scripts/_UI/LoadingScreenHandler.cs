@@ -29,7 +29,7 @@ public class LoadingScreenHandler : MonoBehaviour
     {
         SongName.text = TGI.CurrentSelectedSong.TitleName;
         LoadingAnimator.SetBool("FadeIN", true);
-        StartCoroutine(DebugTest());
+        //StartCoroutine(DebugTest());
 ;    }
 
     public void FadeOut()

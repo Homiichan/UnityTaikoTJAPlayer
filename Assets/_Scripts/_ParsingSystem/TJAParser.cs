@@ -230,6 +230,44 @@ public class TJAParser : MonoBehaviour
 
     }
 
+    public TaikoSongContainer ReadTJAFileRework(string FilePath)
+    {
+        //
+        //ReadingAllLineOfTJAFile
+        //
+        //Preparating lines for the parsing u_u
+        ReInitStruc();
+        string[] tmplines;
+        if (File.Exists(FilePath))
+        {
+            tmplines = File.ReadAllLines(FilePath, System.Text.Encoding.GetEncoding("shift_jis"));
+            for (int i = 0; i <= tmplines.Length - 1; i++)
+            {
+                string currentline = tmplines[i];
+                if (currentline != "")
+                {
+                    currentline.Replace("//", "").Trim();
+                    if (currentline.Contains(","))
+                    {
+                        currentline = currentline.Split(',')[0];
+                        currentline = currentline + ",";
+                        CurrentSongData.AllSongData.Add(currentline);
+                    }
+                    else
+                        CurrentSongData.AllSongData.Add(currentline);
+                }
+
+            }
+        }
+
+        if (CurrentSongData.AllSongData.Count != 0)
+        {
+            return ParseSingleSong(CurrentSongData.AllSongData, FilePath);
+        }
+
+        return CurrentSongData;
+    }
+
     void ParseMainData(List<string> DataToParse, string filePath)
     {
         int tmpindex = filePath.IndexOf('\\');
@@ -486,6 +524,262 @@ public class TJAParser : MonoBehaviour
             AddToAllTJAData(CUrrentParsingStuff);
 
         }
+
+    public TaikoSongContainer ParseSingleSong(List<string> DataToParse, string filePath)
+    {
+        int tmpindex = filePath.IndexOf('\\');
+        CurrentSongData.SongPath = filePath;
+        bool inSong = false;
+        bool isMultipleCourse = false;
+        int CurrentCourseMeta = 0;
+
+        TaikoSongStruc CurrentStruc = new TaikoSongStruc(Taiko_Difficulty.Dif_Oni, 0, 0, new List<string>());
+        TaikoSongContainer CUrrentParsingStuff = new TaikoSongContainer("", new List<TaikoSongStruc>(), new List<string>(), 0, "", 0, 0, 0, 0, 0, "", "", "");
+        List<string> TmpCourseData = new List<string>();
+        //Parsing MetaData of the song 
+        for (int i = 0; i <= DataToParse.Count - 1; i++)
+        {
+            string CurrentLine = DataToParse[i];
+            int SongStart;
+            int SongEnd;
+
+
+            if (CurrentLine.Contains("COURSE"))
+            {
+                isMultipleCourse = true;
+            }
+
+            if (CurrentLine.Contains(":"))
+            {
+                string ParamName = CurrentLine.Split(':')[0];
+
+                string ParamInfo = CurrentLine.Split(':')[1];
+
+                if (ParamName == "TITLE" || ParamName == "GENRE" || ParamName == "WAVE")
+                {
+                    switch (ParamName)
+                    {
+
+                        case "TITLE":
+                            CurrentSongData.TitleName = ParamInfo;
+                            break;
+
+                        case "GENRE":
+                            CurrentSongData.Genre = ParamInfo;
+                            break;
+
+                        case "WAVE":
+                            CurrentSongData.SoundWavePath = ParamInfo;
+                            CurrentSongData.OggPath = GetOGGPathName(filePath, ParamInfo);
+
+                            break;
+                        default:
+
+                            break;
+                    }
+                }
+                if (ParamName == "BPM" || ParamName == "OFFSET" || ParamName == "SONGVOL" || ParamName == "SEVOL" || ParamName == "DEMOSTART" || ParamName == "SCOREMODE")
+                {
+                    switch (ParamName)
+                    {
+
+                        case "BPM":
+                            CurrentSongData.BPM = tryToParseFloatCheck(ParamInfo, ParamName);
+                            break;
+
+                        case "OFFSET":
+                            //Debug.Log(CurrentSongData.TitleName + ParamName);
+                            CurrentSongData.Offset = tryToParseFloatCheck(ParamInfo, ParamName);
+
+                            break;
+
+                        case "SONGVOL":
+                            CurrentSongData.SongVolume = tryToParseFloatCheck(ParamInfo, ParamName);
+                            break;
+
+                        case "SEVOL":
+                            CurrentSongData.SEVOL = tryToParseFloatCheck(ParamInfo, ParamName);
+                            break;
+
+                        case "DEMOSTART":
+                            CurrentSongData.DEMOSTART = tryToParseFloatCheck(ParamInfo, ParamName);
+                            break;
+
+                        case "SCOREMODE":
+                            CurrentSongData.SCOREMODE = tryToParseIntCheck(ParamInfo);
+                            break;
+
+                        default:
+
+                            break;
+                    }
+                }
+                //Parsing Course Data
+                if (ParamName == "COURSE")
+                {
+                    if (CurrentSongData.AllSongDifficulty.Count >= CurrentCourseMeta)
+                    {
+                        CurrentSongData.AllSongDifficulty.Add(new TaikoSongStruc(Taiko_Difficulty.Dif_Oni, 0, 0, new List<string>(TmpCourseData)));
+                        var Dif = CurrentSongData.AllSongDifficulty[CurrentCourseMeta];
+                        Dif.Difficulty = ParseTaikoDif(ParamInfo);
+                        CurrentSongData.AllSongDifficulty[CurrentCourseMeta] = Dif;
+                        isMultipleCourse = true;
+
+                    }
+                }
+                if (ParamName == "LEVEL")
+                {
+                    if (CurrentCourseMeta <= CurrentSongData.AllSongDifficulty.Count - 1)
+                    {
+                        var Level = CurrentSongData.AllSongDifficulty[CurrentCourseMeta];
+                        Level.StarCount = tryToParseIntCheck(ParamInfo);
+                        CurrentSongData.AllSongDifficulty[CurrentCourseMeta] = Level;
+                    }
+                    else if (!isMultipleCourse)
+                    {
+                        if (CurrentSongData.AllSongDifficulty.Count >= 1)
+                        {
+                            var Level = CurrentSongData.AllSongDifficulty[0];
+                            Level.StarCount = tryToParseIntCheck(ParamInfo);
+                            CurrentSongData.AllSongDifficulty[0] = Level;
+                        }
+                        else if (CurrentSongData.AllSongDifficulty.Count == 0)
+                        {
+                            CurrentSongData.AllSongDifficulty.Add(new TaikoSongStruc(Taiko_Difficulty.Dif_Oni, 0, 0, new List<string>(TmpCourseData)));
+                            var Level = CurrentSongData.AllSongDifficulty[0];
+                            Level.StarCount = tryToParseIntCheck(ParamInfo);
+                            CurrentSongData.AllSongDifficulty[0] = Level;
+                        }
+                    }
+                }
+                if (ParamName == "BALLOON")
+                {
+                    if (CurrentCourseMeta <= CurrentSongData.AllSongDifficulty.Count - 1)
+                    {
+                        var Balloon = CurrentSongData.AllSongDifficulty[CurrentCourseMeta];
+                        Balloon.Balloon = tryToParseFloatCheck(ParamInfo, ParamName);
+                        CurrentSongData.AllSongDifficulty[CurrentCourseMeta] = Balloon;
+                    }
+                    else if (!isMultipleCourse)
+                    {
+                        if (CurrentSongData.AllSongDifficulty.Count >= 1)
+                        {
+                            var Balloon = CurrentSongData.AllSongDifficulty[0];
+                            Balloon.Balloon = tryToParseIntCheck(ParamInfo);
+                            CurrentSongData.AllSongDifficulty[0] = Balloon;
+                        }
+                        else if (CurrentSongData.AllSongDifficulty.Count == 0)
+                        {
+                            CurrentSongData.AllSongDifficulty.Add(new TaikoSongStruc(Taiko_Difficulty.Dif_Oni, 0, 0, new List<string>(TmpCourseData)));
+                            var Balloon = CurrentSongData.AllSongDifficulty[0];
+                            Balloon.Balloon = tryToParseIntCheck(ParamInfo);
+                            CurrentSongData.AllSongDifficulty[0] = Balloon;
+                        }
+                    }
+
+                }
+            }
+
+            if (CurrentLine[0] == '#')
+            {
+                if (CurrentLine.Substring(1) == "START")
+                {
+                    inSong = true;
+                    SongStart = i;
+                    if (CurrentCourseMeta <= CurrentSongData.AllSongDifficulty.Count - 1)
+                    {
+                        CurrentStruc.SongData.Add(CurrentLine);
+                        TmpCourseData.Add(CurrentLine);
+                        CurrentSongData.AllSongDifficulty[CurrentCourseMeta].SongData.Add(CurrentLine);
+                    }
+
+                }
+                if (CurrentLine.Substring(1) == "END")
+                {
+                    if (CurrentCourseMeta <= CurrentSongData.AllSongDifficulty.Count - 1)
+                    {
+                        TmpCourseData.Add(CurrentLine);
+                        CurrentStruc.SongData.Add(CurrentLine);
+                        CurrentSongData.AllSongDifficulty[CurrentCourseMeta].SongData.Add(CurrentLine);
+                        inSong = false;
+                        SongEnd = i;
+                        var Level = CurrentSongData.AllSongDifficulty[CurrentCourseMeta];
+                        CurrentCourseMeta++;
+                        CurrentStruc.Balloon = 0;
+                        CurrentStruc.StarCount = 0;
+                    }
+
+                }
+
+                if (CurrentLine.Substring(1).Contains("MEASURE"))
+                {
+                    if (CurrentCourseMeta <= CurrentSongData.AllSongDifficulty.Count - 1)
+                    {
+                        TmpCourseData.Add(CurrentLine);
+                        CurrentStruc.SongData.Add(CurrentLine);
+                        CurrentSongData.AllSongDifficulty[CurrentCourseMeta].SongData.Add(CurrentLine);
+                        var Level = CurrentSongData.AllSongDifficulty[CurrentCourseMeta];
+                    }
+                }
+                if (CurrentLine.Substring(1).Contains("BPMCHANGE"))
+                {
+                    if (CurrentCourseMeta <= CurrentSongData.AllSongDifficulty.Count - 1)
+                    {
+                        TmpCourseData.Add(CurrentLine);
+                        CurrentStruc.SongData.Add(CurrentLine);
+                        CurrentSongData.AllSongDifficulty[CurrentCourseMeta].SongData.Add(CurrentLine);
+                        var Level = CurrentSongData.AllSongDifficulty[CurrentCourseMeta];
+
+                    }
+                }
+                if (CurrentLine.Substring(1).Contains("SCROLL"))
+                {
+                    if (CurrentCourseMeta <= CurrentSongData.AllSongDifficulty.Count - 1)
+                    {
+                        TmpCourseData.Add(CurrentLine);
+                        CurrentStruc.SongData.Add(CurrentLine);
+                        CurrentSongData.AllSongDifficulty[CurrentCourseMeta].SongData.Add(CurrentLine);
+                        var Level = CurrentSongData.AllSongDifficulty[CurrentCourseMeta];
+
+                    }
+                }
+                if (CurrentLine.Substring(1).Contains("GOGOSTART"))
+                {
+                    if (CurrentCourseMeta <= CurrentSongData.AllSongDifficulty.Count - 1)
+                    {
+                        TmpCourseData.Add(CurrentLine);
+                        CurrentStruc.SongData.Add(CurrentLine);
+                        CurrentSongData.AllSongDifficulty[CurrentCourseMeta].SongData.Add(CurrentLine);
+                        var Level = CurrentSongData.AllSongDifficulty[CurrentCourseMeta];
+
+                    }
+                }
+                if (CurrentLine.Substring(1).Contains("GOGOEND"))
+                {
+                    if (CurrentCourseMeta <= CurrentSongData.AllSongDifficulty.Count - 1)
+                    {
+                        TmpCourseData.Add(CurrentLine);
+                        CurrentStruc.SongData.Add(CurrentLine);
+                        CurrentSongData.AllSongDifficulty[CurrentCourseMeta].SongData.Add(CurrentLine);
+                        var Level = CurrentSongData.AllSongDifficulty[CurrentCourseMeta];
+
+                    }
+                }
+            }
+            if (inSong && CurrentLine[0] != '#')
+            {
+                if (CurrentCourseMeta <= CurrentSongData.AllSongDifficulty.Count - 1)
+                {
+                    CurrentStruc.SongData.Add(CurrentLine);
+                    CurrentSongData.AllSongDifficulty[CurrentCourseMeta].SongData.Add(CurrentLine);
+                    TmpCourseData.Add(CurrentLine);
+                }
+            }
+
+
+        }
+        return CurrentSongData;
+    }
 
     void AddToAllTJAData(TaikoSongContainer tmptest)
     {
