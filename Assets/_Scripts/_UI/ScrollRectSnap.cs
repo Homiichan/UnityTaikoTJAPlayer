@@ -17,12 +17,14 @@ public class ScrollRectSnap : MonoBehaviour
     public SongDiffSelectorScreenController SongDiffScreen;
 
     TaikoGameInstance TGI;
+    private AudioSource MainAudioPlayer;
 
     public GameObject SongUITemplate;
     // Start is called before the first frame update
     void Start()
     {
         TGI = GameObject.FindObjectOfType<TaikoGameInstance>();
+        MainAudioPlayer = TaikoStaticExtension.GetMainSongPlayer();
     }
 
     public void ConstructUI()
@@ -94,6 +96,7 @@ public class ScrollRectSnap : MonoBehaviour
             CurrentSelectedSong = Song[songSelected].gameObject;
             CurrentSelectedSong.GetComponent<songUI>().ExpandUI();
             CurrentSelectedSongIndex = songSelected;
+            StartCoroutine(TaikoStaticExtension.LoadAndPlaySong(MainAudioPlayer, TGI.CurrentSelectedSong));
             TGI.SetSelectedSong(songSelected - 1);
         }
         
@@ -123,6 +126,7 @@ public class ScrollRectSnap : MonoBehaviour
         CurrentSelectedSong = newSong;
         CurrentSelectedSongIndex = songIndex;
         TGI.SetSelectedSong(CurrentSelectedSongIndex - 1);
+        StartCoroutine(TaikoStaticExtension.LoadAndPlaySong(MainAudioPlayer, TGI.CurrentSelectedSong));
     }
 
 

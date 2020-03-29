@@ -463,6 +463,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4452896841497018330, guid: 4d83256a7d409d04f8a50c3637df437f,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452896841497018330, guid: 4d83256a7d409d04f8a50c3637df437f,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8250809197461845624, guid: 4d83256a7d409d04f8a50c3637df437f,
         type: 3}
       propertyPath: m_Name
@@ -572,6 +582,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8250809197461845630, guid: 4d83256a7d409d04f8a50c3637df437f,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8250809197461845630, guid: 4d83256a7d409d04f8a50c3637df437f,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 8250809197461845630, guid: 4d83256a7d409d04f8a50c3637df437f,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8250809197461845630, guid: 4d83256a7d409d04f8a50c3637df437f,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.045
       objectReference: {fileID: 0}
     - target: {fileID: 8250809197613216089, guid: 4d83256a7d409d04f8a50c3637df437f,
         type: 3}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SongDiffSelectorScreenController : MonoBehaviour
 {
@@ -208,6 +209,19 @@ public class SongDiffSelectorScreenController : MonoBehaviour
         TGI.FindSongAndDifficulty(0, TaikoStaticExtension.GetTaikoDiffByInt(SelectedDif));
         TaikoStaticExtension.SetFadeState(true);
         Debug.Log("selected dif = " + TaikoStaticExtension.GetTaikoDiffByInt(SelectedDif));
+        StartCoroutine(WaitBeforeFade());
+
     }
 
+    void LoadLevel()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public IEnumerator WaitBeforeFade()
+    {
+        yield return new WaitForSeconds(1.5f);
+        LoadLevel();
+
+    }
 }

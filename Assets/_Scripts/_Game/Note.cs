@@ -86,11 +86,14 @@ public class Note : MonoBehaviour
             case Taiko_Notes.Blank:
                 if (IsSlider)
                 {
+                    /*
                     GetComponent<Image>().sprite = BalloonMiddle;
                     GetComponent<Image>().SetNativeSize();
                     StartCoroutine(SwitchNoteTexture());
                     GetComponent<Image>().type = Image.Type.Tiled;
                     GetComponent<RectTransform>().pivot = new Vector2(0, .5f);
+                    */
+                    DestroyNote(false);
                     break;
                 }
                 else
@@ -102,8 +105,11 @@ public class Note : MonoBehaviour
             case Taiko_Notes.endBalloon:
                 if(!IsSlider)
                 {
+                    DestroyNote(false);
+                    /*
                     GetComponent<Image>().sprite = EndBalloon;
                     GetComponent<Image>().SetNativeSize();
+                    */
                     break;
                 }
                 else
@@ -145,7 +151,10 @@ public class Note : MonoBehaviour
                 this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1.5f, 1.5f, 1);
                 break;
             case Taiko_Notes.BigDrumRoll:
+                DestroyNote(false);
+                /*
                 this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1.5f, 1.5f, 1);
+                */
                 break;
         }
 

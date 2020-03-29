@@ -46,9 +46,10 @@ public class TaikoSongPlayer : MonoBehaviour
     {
         TGI = GameObject.FindObjectOfType<TaikoGameInstance>();
         AS = GetComponent<AudioSource>();
-       // Time.timeScale = .5f;
-        
-        if(TGI != null)
+        TaikoStaticExtension.SetFadeState(false);
+        // Time.timeScale = .5f;
+
+        if (TGI != null)
         {
             CurrentPlayingSong = TGI.CurrentSelectedSong;
             DiffToPlay = TGI.SongDiffIndex;
